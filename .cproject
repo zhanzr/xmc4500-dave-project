@@ -119,7 +119,7 @@
 							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.GNU_ELF" id="com.ifx.xmc4000.targetPlatform.1025562687" isAbstract="false" name="Windows Platform" osList="win32" superClass="com.ifx.xmc4000.targetPlatform"/>
 							<builder buildPath="${workspace_loc:/xmc4500_t1}/Debug" id="com.ifx.XMC4000.toolchainBuilder.673411944" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="XMC Builder" parallelBuildOn="true" parallelizationNumber="optimal" superClass="com.ifx.XMC4000.toolchainBuilder"/>
 							<tool id="com.ifx.xmc4000.appDebug.compiler.1508207451" name="ARM-GCC C Compiler" superClass="com.ifx.xmc4000.appDebug.compiler">
-								<option id="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.optimization.level.341165472" name="Optimization level" superClass="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false"/>
+								<option id="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.optimization.level.341165472" name="Optimization level" superClass="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false" value="org.eclipse.cdt.cross.arm.gnu.base.option.optimization.level.most" valueType="enumerated"/>
 								<option id="com.ifx.xmc4000.compiler.option.misc.mfloat.1177909220" name="Floating point" superClass="com.ifx.xmc4000.compiler.option.misc.mfloat" useByScannerDiscovery="false" value="org.eclipse.cdt.cross.arm.gnu.base.option.other.mfloat.softfp" valueType="enumerated"/>
 								<option id="com.ifx.xmc4000.compiler.option.include.paths.1028899590" name="Include paths (-I)" superClass="com.ifx.xmc4000.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Libraries/XMCLib/inc}&quot;"/>
@@ -132,6 +132,7 @@
 								<option id="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.preprocessor.def.1989819403" name="Defined symbols (-D)" superClass="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.preprocessor.def" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="XMC4500_F100x1024"/>
 								</option>
+								<option id="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.misc.fastmath.46522059" name="Fast math (-ffast-math)" superClass="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.misc.fastmath" useByScannerDiscovery="false" value="true" valueType="boolean"/>
 								<inputType id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.c.compiler.base.input.1786530260" superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.c.compiler.base.input"/>
 							</tool>
 							<tool id="com.ifx.xmc4000.appDebug.cppcompiler.851056352" name="ARM-GCC C++ Compiler" superClass="com.ifx.xmc4000.appDebug.cppcompiler">
@@ -160,7 +161,7 @@
 							</tool>
 							<tool id="com.ifx.xmc4000.appDebug.linker.2106263666" name="ARM-GCC C Linker" superClass="com.ifx.xmc4000.appDebug.linker">
 								<option id="com.ifx.xmc4000.appLinker.option.misc.fpu.29745464" name="Fpu (-mfpu)" superClass="com.ifx.xmc4000.appLinker.option.misc.fpu" value="org.eclipse.cdt.cross.arm.gnu.base.option.mfpu.fpv4-sp-d16" valueType="enumerated"/>
-								<option id="com.ifx.xmc4000.appLinker.option.misc.mfloat.904182534" name="Floating point" superClass="com.ifx.xmc4000.appLinker.option.misc.mfloat" value="org.eclipse.cdt.cross.arm.gnu.base.option.other.mfloat.softfp" valueType="enumerated"/>
+								<option id="com.ifx.xmc4000.appLinker.option.misc.mfloat.904182534" name="Floating point" superClass="com.ifx.xmc4000.appLinker.option.misc.mfloat" useByScannerDiscovery="false" value="org.eclipse.cdt.cross.arm.gnu.base.option.other.mfloat.softfp" valueType="enumerated"/>
 								<option id="com.ifx.xmc4000.appLinker.option.newlib.1227329175" name="Runtime library" superClass="com.ifx.xmc4000.appLinker.option.newlib" value="org.eclipse.cdt.cross.arm.gnu.c.link.option.newlib.standard" valueType="enumerated"/>
 								<option id="com.ifx.xmc4000.appLinker.option.nosys.specs.1570657440" name="Provide default newlib system calls (-specs=nosys.specs)" superClass="com.ifx.xmc4000.appLinker.option.nosys.specs" value="true" valueType="boolean"/>
 								<inputType id="com.ifx.xmc4000.appLinker.inputType.1846790534" name="ARM-GCC for XMC Linker Input Type" superClass="com.ifx.xmc4000.appLinker.inputType">

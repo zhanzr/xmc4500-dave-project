@@ -34,9 +34,11 @@ void LED_Toggle_EverySec(void)
 {
 	DIGITAL_IO_ToggleOutput(&DIGITAL_IO_0);
 	DIGITAL_IO_ToggleOutput(&DIGITAL_IO_1);
-
-	printf("%u Hz, %08X\n", SystemCoreClock, SCB->CPUID);
+//	printf("%u Hz, %08X\n", SystemCoreClock, SCB->CPUID);
 }
+
+void test_whets(void);
+void test_whetd(void);
 
 /**
 
@@ -65,7 +67,9 @@ int main(void)
 		}
 	}
 
-	printf("%u Hz, %08X\n", SystemCoreClock, SCB->CPUID);
+	printf("%u Hz, %08X, CM:%d, FPU_USED:%d\n",
+			SystemCoreClock, SCB->CPUID,
+			__CORTEX_M, __FPU_USED);
 	// Create Software timer
 #define ONESEC	1000
 	uint32_t TimerId = (uint32_t)SYSTIMER_CreateTimer(1000*SYSTIMER_TICK_PERIOD_US,
@@ -78,6 +82,7 @@ int main(void)
 	/* Placeholder for user application code. The while loop below can be replaced with user application code. */
 	while(1U)
 	{
-
+		test_whets();
+		test_whetd();
 	}
 }
