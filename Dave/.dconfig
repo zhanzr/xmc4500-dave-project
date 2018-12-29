@@ -3,6 +3,8 @@
     <ResourceReserve/>
     <Solver>
         <SolverBndMap>
+            <BindMap MUri="peripheral/vadc/0/global" Proxy="app/GLOBAL_ADC/0/hwres_vadc_global"/>
+            <BindMap MUri="peripheral/vadc/0/global_limits" Proxy="app/GLOBAL_ADC/0/hwres_vadc_global_Limit"/>
             <BindMap MUri="peripheral/scu/0/clkctrl/0/pll" Proxy="app/CLOCK_XMC4/0/hwres_pll"/>
             <BindMap MUri="peripheral/cpu/0/exception/memmanage" Proxy="app/CPU_CTRL_XMC4/0/hwres_exception_memmanage"/>
             <BindMap MUri="peripheral/cpu/0/systick" Proxy="app/SYSTIMER/0/hwres_syst"/>
@@ -13,6 +15,10 @@
             <BindMap MUri="port/p/1/pad/1" Proxy="app/DIGITAL_IO/1/hwres_port_pin"/>
             <BindMap MUri="port/debug_port/0/pad/1" Proxy="app/CPU_CTRL_XMC4/0/hwres_port_pad_swd_tms"/>
             <BindMap MUri="devicepackage/0/79" Proxy="app/DIGITAL_IO/0/__pin_hwres_port_pin"/>
+            <BindMap MUri="peripheral/vadc/0/group/1/config" Proxy="app/GLOBAL_ADC/0/hwres_vadc_group1"/>
+            <BindMap MUri="peripheral/vadc/0/group/0/config" Proxy="app/GLOBAL_ADC/0/hwres_vadc_group0"/>
+            <BindMap MUri="peripheral/vadc/0/group/3/config" Proxy="app/GLOBAL_ADC/0/hwres_vadc_group3"/>
+            <BindMap MUri="peripheral/vadc/0/group/2/config" Proxy="app/GLOBAL_ADC/0/hwres_vadc_group2"/>
             <BindMap MUri="peripheral/scu/0/clkctrl/0/ccu" Proxy="app/CLOCK_XMC4/0/hwres_ccu"/>
             <BindMap MUri="peripheral/cpu/0/exception/busfault" Proxy="app/CPU_CTRL_XMC4/0/hwres_exception_busfault"/>
             <BindMap MUri="peripheral/scu/0/trap/0/sysoscwd" Proxy="app/CLOCK_XMC4/0/hwres_sysoscwd_trap"/>

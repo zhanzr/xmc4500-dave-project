@@ -13,6 +13,8 @@
 #include  <errno.h>
 #include  <sys/unistd.h> // STDOUT_FILENO, STDERR_FILENO
 
+#include <xmc_scu.h>
+
 //Retarget IO
 int _write(int file, char *data, int len) {
 	int i;
@@ -35,6 +37,17 @@ void LED_Toggle_EverySec(void)
 	DIGITAL_IO_ToggleOutput(&DIGITAL_IO_0);
 	DIGITAL_IO_ToggleOutput(&DIGITAL_IO_1);
 //	printf("%u Hz, %08X\n", SystemCoreClock, SCB->CPUID);
+
+	//T_DTS = (RESULT - 605) / 2.05 [°C]
+	uint32_t tmpDts = XMC_SCU_GetTemperatureMeasurement();
+	float tmpCel = (tmpDts-605)/2.05;
+	printf("%f\n", tmpCel);
+
+	float tmpV13 = XMC_SCU_POWER_GetEVR13Voltage();
+	float tmpV33 = XMC_SCU_POWER_GetEVR33Voltage();
+	printf("%f %f\n", tmpV13, tmpV33);
+
+	XMC_SCU_StartTemperatureMeasurement();
 }
 
 void test_whets(void);
@@ -56,6 +69,9 @@ int main(void)
 
 	status = DAVE_Init();           /* Initialization of DAVE APPs  */
 
+	XMC_SCU_EnableTemperatureSensor();
+	XMC_SCU_StartTemperatureMeasurement();
+
 	if(status != DAVE_STATUS_SUCCESS)
 	{
 		/* Placeholder for error handler code. The while loop below can be replaced with an user error handler. */
@@ -70,6 +86,8 @@ int main(void)
 	printf("%u Hz, %08X, CM:%d, FPU_USED:%d\n",
 			SystemCoreClock, SCB->CPUID,
 			__CORTEX_M, __FPU_USED);
+	printf("Boot Mode:%u\n", XMC_SCU_GetBootMode());
+
 	// Create Software timer
 #define ONESEC	1000
 	uint32_t TimerId = (uint32_t)SYSTIMER_CreateTimer(1000*SYSTIMER_TICK_PERIOD_US,
@@ -82,7 +100,7 @@ int main(void)
 	/* Placeholder for user application code. The while loop below can be replaced with user application code. */
 	while(1U)
 	{
-		test_whets();
-		test_whetd();
+//		test_whets();
+//		test_whetd();
 	}
 }

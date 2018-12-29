@@ -7,7 +7,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.16/app/CPU_CTRL_XMC4/0"/>
     <properties key="APP_NAME_ID" value="CPU_CTRL_XMC4/0"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="161" height="71" x="40" y="20">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="161" height="71" x="90" y="20">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="2" transparency="0.0" width="121" height="71" x="20" style="//@styles.0/@styles.3" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="//@children.0/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
@@ -48,7 +48,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.22/app/CLOCK_XMC4/0"/>
     <properties key="APP_NAME_ID" value="CLOCK_XMC4/0"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="161" height="221" x="20" y="131">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="161" height="221" x="90" y="131">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="2" transparency="0.0" width="121" height="221" x="20" style="//@styles.0/@styles.3" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:BoxRelativeAnchor" active="true" referencedGraphicsAlgorithm="//@children.1/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
@@ -187,7 +187,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.16/app/DIGITAL_IO/0"/>
     <properties key="APP_NAME_ID" value="DIGITAL_IO/0"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="161" height="91" x="20" y="392">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="161" height="91" x="90" y="392">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="2" transparency="0.0" width="121" height="91" x="20" style="//@styles.0/@styles.3" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="//@children.2/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
@@ -242,7 +242,7 @@
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="uri" value="http://resources/4.0.16/app/DIGITAL_IO/1"/>
     <properties key="APP_NAME_ID" value="DIGITAL_IO/1"/>
-    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="161" height="91" x="20" y="523">
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="161" height="91" x="90" y="523">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="2" transparency="0.0" width="121" height="91" x="20" style="//@styles.0/@styles.3" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
     <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="//@children.3/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
@@ -292,6 +292,327 @@
     <children>
       <properties key="uri" value="http://resources/4.0.16/app/DIGITAL_IO/1/vs_digital_io_hwsel"/>
       <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineStyle="UNSPECIFIED" width="105" height="20" x="30" y="65" style="//@styles.0/@styles.2" horizontalAlignment="ALIGNMENT_RIGHT" value="hardware pin control"/>
+    </children>
+  </children>
+  <children xsi:type="pi:ContainerShape" visible="true" active="true">
+    <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0"/>
+    <properties key="APP_NAME_ID" value="GLOBAL_ADC/0"/>
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="261" height="301" x="20" y="654">
+      <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="2" transparency="0.0" width="221" height="301" x="20" style="//@styles.0/@styles.3" cornerHeight="5" cornerWidth="5"/>
+    </graphicsAlgorithm>
+    <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="//@children.4/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
+      <properties key="SignalName" value="global_signal"/>
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_global"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.2" lineStyle="UNSPECIFIED" width="20" height="10" x="220" y="55"/>
+    </anchors>
+    <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="//@children.4/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
+      <properties key="SignalName" value="group0_end_of_arbitration_round"/>
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g0_garbcnt"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.2" lineStyle="UNSPECIFIED" width="20" height="10" x="220" y="75"/>
+    </anchors>
+    <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="//@children.4/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
+      <properties key="SignalName" value="group0_end_of_sampling_signal"/>
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g0_gsample"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.2" lineStyle="UNSPECIFIED" width="20" height="10" x="220" y="95"/>
+    </anchors>
+    <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="//@children.4/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
+      <properties key="SignalName" value="group1_end_of_arbitration_round"/>
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g1_garbcnt"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.2" lineStyle="UNSPECIFIED" width="20" height="10" x="220" y="115"/>
+    </anchors>
+    <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="//@children.4/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
+      <properties key="SignalName" value="group1_end_of_sampling_signal"/>
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g1_gsample"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.2" lineStyle="UNSPECIFIED" width="20" height="10" x="220" y="135"/>
+    </anchors>
+    <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="//@children.4/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
+      <properties key="SignalName" value="group2_end_of_arbitration_round"/>
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g2_garbcnt"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.2" lineStyle="UNSPECIFIED" width="20" height="10" x="220" y="155"/>
+    </anchors>
+    <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="//@children.4/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
+      <properties key="SignalName" value="group2_end_of_sampling_signal"/>
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g2_gsample"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.2" lineStyle="UNSPECIFIED" width="20" height="10" x="220" y="175"/>
+    </anchors>
+    <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="//@children.4/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
+      <properties key="SignalName" value="group3_end_of_arbitration_round"/>
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g3_garbcnt"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.2" lineStyle="UNSPECIFIED" width="20" height="10" x="220" y="195"/>
+    </anchors>
+    <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="//@children.4/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
+      <properties key="SignalName" value="group3_end_of_sampling_signal"/>
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g3_gsample"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.2" lineStyle="UNSPECIFIED" width="20" height="10" x="220" y="215"/>
+    </anchors>
+    <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="//@children.4/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
+      <properties key="SignalName" value="group0_input_queue"/>
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g0_gqueuereq"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.2" lineStyle="UNSPECIFIED" width="20" height="10" x="-20" y="55"/>
+    </anchors>
+    <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="//@children.4/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
+      <properties key="SignalName" value="group0_input_scan"/>
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g0_gscanreq"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.2" lineStyle="UNSPECIFIED" width="20" height="10" x="-20" y="75"/>
+    </anchors>
+    <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="//@children.4/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
+      <properties key="SignalName" value="group0_sync_request_signal"/>
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g0_gsyncreq"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.2" lineStyle="UNSPECIFIED" width="20" height="10" x="-20" y="95"/>
+    </anchors>
+    <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="//@children.4/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
+      <properties key="SignalName" value="group1_input_queue"/>
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g1_gqueuereq"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.2" lineStyle="UNSPECIFIED" width="20" height="10" x="-20" y="115"/>
+    </anchors>
+    <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="//@children.4/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
+      <properties key="SignalName" value="group1_input_scan"/>
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g1_gscanreq"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.2" lineStyle="UNSPECIFIED" width="20" height="10" x="-20" y="135"/>
+    </anchors>
+    <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="//@children.4/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
+      <properties key="SignalName" value="group1_sync_request_signal"/>
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g1_gsyncreq"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.2" lineStyle="UNSPECIFIED" width="20" height="10" x="-20" y="155"/>
+    </anchors>
+    <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="//@children.4/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
+      <properties key="SignalName" value="group2_input_queue"/>
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g2_gqueuereq"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.2" lineStyle="UNSPECIFIED" width="20" height="10" x="-20" y="175"/>
+    </anchors>
+    <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="//@children.4/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
+      <properties key="SignalName" value="group2_input_scan"/>
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g2_gscanreq"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.2" lineStyle="UNSPECIFIED" width="20" height="10" x="-20" y="195"/>
+    </anchors>
+    <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="//@children.4/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
+      <properties key="SignalName" value="group2_sync_request_signal"/>
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g2_gsyncreq"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.2" lineStyle="UNSPECIFIED" width="20" height="10" x="-20" y="215"/>
+    </anchors>
+    <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="//@children.4/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
+      <properties key="SignalName" value="group3_input_queue"/>
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g3_gqueuereq"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.2" lineStyle="UNSPECIFIED" width="20" height="10" x="-20" y="235"/>
+    </anchors>
+    <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="//@children.4/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
+      <properties key="SignalName" value="group3_input_scan"/>
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g3_gscanreq"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.2" lineStyle="UNSPECIFIED" width="20" height="10" x="-20" y="255"/>
+    </anchors>
+    <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" referencedGraphicsAlgorithm="//@children.4/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
+      <properties key="SignalName" value="group3_sync_request_signal"/>
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g3_gsyncreq"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.2" lineStyle="UNSPECIFIED" width="20" height="10" x="-20" y="275"/>
+    </anchors>
+    <children visible="true">
+      <graphicsAlgorithm xsi:type="al:Polyline" lineStyle="UNSPECIFIED" style="//@styles.0">
+        <points x="20" y="40"/>
+        <points x="241" y="40"/>
+      </graphicsAlgorithm>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="221" height="20" x="20"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" lineStyle="UNSPECIFIED" width="219" height="20" x="2" style="//@styles.0/@styles.0" horizontalAlignment="ALIGNMENT_CENTER" value="GLOBAL_ADC"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="221" height="20" x="20" y="20"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" lineStyle="UNSPECIFIED" width="219" height="20" x="2" style="//@styles.0/@styles.1" horizontalAlignment="ALIGNMENT_CENTER" value="GLOBAL_ADC_0">
+          <properties key="AppInstanceLabel" value="GLOBAL_ADC_0"/>
+        </graphicsAlgorithm>
+      </children>
+    </children>
+    <children visible="true" active="true">
+      <properties key="SignalName" value="global_signal"/>
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_global"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="-20" y="35"/>
+    </children>
+    <children visible="true">
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_global"/>
+      <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineStyle="UNSPECIFIED" width="115" height="20" x="120" y="50" style="//@styles.0/@styles.2" horizontalAlignment="ALIGNMENT_RIGHT" value="global_signal"/>
+    </children>
+    <children visible="true" active="true">
+      <properties key="SignalName" value="group0_end_of_arbitration_round"/>
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g0_garbcnt"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="-20" y="55"/>
+    </children>
+    <children visible="true">
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g0_garbcnt"/>
+      <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineStyle="UNSPECIFIED" width="115" height="20" x="120" y="70" style="//@styles.0/@styles.2" horizontalAlignment="ALIGNMENT_RIGHT" value="group0_end_of_arbitration_round"/>
+    </children>
+    <children visible="true" active="true">
+      <properties key="SignalName" value="group0_end_of_sampling_signal"/>
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g0_gsample"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="-20" y="75"/>
+    </children>
+    <children visible="true">
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g0_gsample"/>
+      <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineStyle="UNSPECIFIED" width="115" height="20" x="120" y="90" style="//@styles.0/@styles.2" horizontalAlignment="ALIGNMENT_RIGHT" value="group0_end_of_sampling_signal"/>
+    </children>
+    <children visible="true" active="true">
+      <properties key="SignalName" value="group1_end_of_arbitration_round"/>
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g1_garbcnt"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="-20" y="95"/>
+    </children>
+    <children visible="true">
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g1_garbcnt"/>
+      <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineStyle="UNSPECIFIED" width="115" height="20" x="120" y="110" style="//@styles.0/@styles.2" horizontalAlignment="ALIGNMENT_RIGHT" value="group1_end_of_arbitration_round"/>
+    </children>
+    <children visible="true" active="true">
+      <properties key="SignalName" value="group1_end_of_sampling_signal"/>
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g1_gsample"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="-20" y="115"/>
+    </children>
+    <children visible="true">
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g1_gsample"/>
+      <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineStyle="UNSPECIFIED" width="115" height="20" x="120" y="130" style="//@styles.0/@styles.2" horizontalAlignment="ALIGNMENT_RIGHT" value="group1_end_of_sampling_signal"/>
+    </children>
+    <children visible="true" active="true">
+      <properties key="SignalName" value="group2_end_of_arbitration_round"/>
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g2_garbcnt"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="-20" y="135"/>
+    </children>
+    <children visible="true">
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g2_garbcnt"/>
+      <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineStyle="UNSPECIFIED" width="115" height="20" x="120" y="150" style="//@styles.0/@styles.2" horizontalAlignment="ALIGNMENT_RIGHT" value="group2_end_of_arbitration_round"/>
+    </children>
+    <children visible="true" active="true">
+      <properties key="SignalName" value="group2_end_of_sampling_signal"/>
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g2_gsample"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="-20" y="155"/>
+    </children>
+    <children visible="true">
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g2_gsample"/>
+      <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineStyle="UNSPECIFIED" width="115" height="20" x="120" y="170" style="//@styles.0/@styles.2" horizontalAlignment="ALIGNMENT_RIGHT" value="group2_end_of_sampling_signal"/>
+    </children>
+    <children visible="true" active="true">
+      <properties key="SignalName" value="group3_end_of_arbitration_round"/>
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g3_garbcnt"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="-20" y="175"/>
+    </children>
+    <children visible="true">
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g3_garbcnt"/>
+      <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineStyle="UNSPECIFIED" width="115" height="20" x="120" y="190" style="//@styles.0/@styles.2" horizontalAlignment="ALIGNMENT_RIGHT" value="group3_end_of_arbitration_round"/>
+    </children>
+    <children visible="true" active="true">
+      <properties key="SignalName" value="group3_end_of_sampling_signal"/>
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g3_gsample"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="-20" y="195"/>
+    </children>
+    <children visible="true">
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g3_gsample"/>
+      <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineStyle="UNSPECIFIED" width="115" height="20" x="120" y="210" style="//@styles.0/@styles.2" horizontalAlignment="ALIGNMENT_RIGHT" value="group3_end_of_sampling_signal"/>
+    </children>
+    <children visible="true" active="true">
+      <properties key="SignalName" value="group0_input_queue"/>
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g0_gqueuereq"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="-20" y="35"/>
+    </children>
+    <children visible="true">
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g0_gqueuereq"/>
+      <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineStyle="UNSPECIFIED" width="86" height="20" x="25" y="50" style="//@styles.0/@styles.2" value="group0_input_queue"/>
+    </children>
+    <children visible="true" active="true">
+      <properties key="SignalName" value="group0_input_scan"/>
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g0_gscanreq"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="-20" y="55"/>
+    </children>
+    <children visible="true">
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g0_gscanreq"/>
+      <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineStyle="UNSPECIFIED" width="86" height="20" x="25" y="70" style="//@styles.0/@styles.2" value="group0_input_scan"/>
+    </children>
+    <children visible="true" active="true">
+      <properties key="SignalName" value="group0_sync_request_signal"/>
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g0_gsyncreq"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="-20" y="75"/>
+    </children>
+    <children visible="true">
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g0_gsyncreq"/>
+      <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineStyle="UNSPECIFIED" width="86" height="20" x="25" y="90" style="//@styles.0/@styles.2" value="group0_sync_request_signal"/>
+    </children>
+    <children visible="true" active="true">
+      <properties key="SignalName" value="group1_input_queue"/>
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g1_gqueuereq"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="-20" y="95"/>
+    </children>
+    <children visible="true">
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g1_gqueuereq"/>
+      <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineStyle="UNSPECIFIED" width="86" height="20" x="25" y="110" style="//@styles.0/@styles.2" value="group1_input_queue"/>
+    </children>
+    <children visible="true" active="true">
+      <properties key="SignalName" value="group1_input_scan"/>
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g1_gscanreq"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="-20" y="115"/>
+    </children>
+    <children visible="true">
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g1_gscanreq"/>
+      <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineStyle="UNSPECIFIED" width="86" height="20" x="25" y="130" style="//@styles.0/@styles.2" value="group1_input_scan"/>
+    </children>
+    <children visible="true" active="true">
+      <properties key="SignalName" value="group1_sync_request_signal"/>
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g1_gsyncreq"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="-20" y="135"/>
+    </children>
+    <children visible="true">
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g1_gsyncreq"/>
+      <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineStyle="UNSPECIFIED" width="86" height="20" x="25" y="150" style="//@styles.0/@styles.2" value="group1_sync_request_signal"/>
+    </children>
+    <children visible="true" active="true">
+      <properties key="SignalName" value="group2_input_queue"/>
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g2_gqueuereq"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="-20" y="155"/>
+    </children>
+    <children visible="true">
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g2_gqueuereq"/>
+      <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineStyle="UNSPECIFIED" width="86" height="20" x="25" y="170" style="//@styles.0/@styles.2" value="group2_input_queue"/>
+    </children>
+    <children visible="true" active="true">
+      <properties key="SignalName" value="group2_input_scan"/>
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g2_gscanreq"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="-20" y="175"/>
+    </children>
+    <children visible="true">
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g2_gscanreq"/>
+      <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineStyle="UNSPECIFIED" width="86" height="20" x="25" y="190" style="//@styles.0/@styles.2" value="group2_input_scan"/>
+    </children>
+    <children visible="true" active="true">
+      <properties key="SignalName" value="group2_sync_request_signal"/>
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g2_gsyncreq"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="-20" y="195"/>
+    </children>
+    <children visible="true">
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g2_gsyncreq"/>
+      <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineStyle="UNSPECIFIED" width="86" height="20" x="25" y="210" style="//@styles.0/@styles.2" value="group2_sync_request_signal"/>
+    </children>
+    <children visible="true" active="true">
+      <properties key="SignalName" value="group3_input_queue"/>
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g3_gqueuereq"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="-20" y="215"/>
+    </children>
+    <children visible="true">
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g3_gqueuereq"/>
+      <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineStyle="UNSPECIFIED" width="86" height="20" x="25" y="230" style="//@styles.0/@styles.2" value="group3_input_queue"/>
+    </children>
+    <children visible="true" active="true">
+      <properties key="SignalName" value="group3_input_scan"/>
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g3_gscanreq"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="-20" y="235"/>
+    </children>
+    <children visible="true">
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g3_gscanreq"/>
+      <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineStyle="UNSPECIFIED" width="86" height="20" x="25" y="250" style="//@styles.0/@styles.2" value="group3_input_scan"/>
+    </children>
+    <children visible="true" active="true">
+      <properties key="SignalName" value="group3_sync_request_signal"/>
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g3_gsyncreq"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="-20" y="255"/>
+    </children>
+    <children visible="true">
+      <properties key="uri" value="http://resources/4.0.18/app/GLOBAL_ADC/0/vs_global_adc_g3_gsyncreq"/>
+      <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineStyle="UNSPECIFIED" width="86" height="20" x="25" y="270" style="//@styles.0/@styles.2" value="group3_sync_request_signal"/>
     </children>
   </children>
   <styles background="//@colors.1" lineWidth="2" lineVisible="true" transparency="0.0" id="COMMON-VALUES" horizontalAlignment="UNSPECIFIED" verticalAlignment="UNSPECIFIED">
@@ -492,6 +813,7 @@
   <colors/>
   <colors red="192" green="192" blue="192"/>
   <colors red="128" green="128" blue="128"/>
+  <colors green="127"/>
   <fonts name="Arial" size="8"/>
   <fonts name="Arial" size="8" bold="true"/>
 </pi:Diagram>
