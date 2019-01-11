@@ -1,0 +1,31 @@
+<p1:Tab  xmlns="http://www.eclipse.org/xwt/presentation" xmlns:x="http://www.eclipse.org/xwt" xmlns:p1="clr-namespace:com.ifx.davex.ui.controls.app" x:Class="e" layout="{x:Null}">
+	<p1:TabFolder bounds="5, 5, 600, 500">
+		<p1:GTab text="General Settings" visible="true" enabled="true" manifestObj="true" widgetName="gtab_General_Settings">
+			<p1:GTab.control>
+				<p1:Tab layout="{x:Null}">
+					<p1:GGroup text="CRC Input Configuration" manifestObj="true" widgetName="ggroup_input_config" bounds="5, 5, 581, 91" layout="{x:Null}">
+						<p1:GCombo mandatory="(com.ifx.davex.ui.controls.util.AppUiConstants).FALSE" manifestObj="true" widgetName="gcombo_crc_mode" bounds="123, 26, 97, 21" options="CRC8&#13;&#10;CRC16&#13;&#10;CRC32" value="CRC8" toolTipText="CRC8 needs kernel 3, CRC16 needs kernel 2, CRC32_K0 and CRC32_K1 needs either kernel 0 or 1." description="Allows to select the CRC8(uses FCE kernel 3) or CRC16(uses FCE kernel 2) or CRC32 using FCE kernel 0 or 1."/>
+						<p1:GLabel text="CRC mode:" visible="true" manifestObj="true" widgetName="glabel_crc_mode" bounds="13, 28, 70, 15" toolTipText="Select the CRC mode" description="Aloows to select 8 bit, 16 bit or 32 bit CRC."/>
+						<p1:GCheck text="Enable input data bytewise reflection" manifestObj="true" widgetName="gcheck_input_bytewise" bounds="12, 60, 221, 16" toolTipText="Enables the input data inversion." description="Enables the input data inversion."/>
+					</p1:GGroup>
+					<p1:GGroup text="CRC Output Configuration " manifestObj="true" widgetName="ggroup_output_config" bounds="7, 106, 579, 74">
+						<p1:GCheck text="Enable CRC output reflection" manifestObj="true" widgetName="gcheck_reflect_ouput_bitwise" bounds="8, 20, 222, 16" toolTipText="Enables the CRC output inversion before result check." description="Enables the CRC output inversion before result check."/>
+						<p1:GCheck text="Enable CRC output bitwise XOR with 1" manifestObj="true" widgetName="gcheck_ouput_xor" bounds="8, 47, 228, 16" toolTipText="XOR CRC output with 1" description="Enable CRC output bitwise XOR with 1"/>
+					</p1:GGroup>
+				</p1:Tab>
+			</p1:GTab.control>
+		</p1:GTab>
+		<p1:GTab text="Interrupt Settings" visible="true" enabled="true" manifestObj="true" widgetName="gtab_Interrupt_Settings">
+			<p1:GTab.control>
+				<p1:Tab widgetName="composite_3">
+					<p1:GGroup text="Error Handling" manifestObj="true" widgetName="ggroup_error_handling" bounds="4, 8, 582, 146">
+						<p1:GCheck text="Enable CRC mismatch interrupt" manifestObj="true" widgetName="gcheck_crc_mismatch_interrupt" bounds="10, 24, 217, 16" toolTipText="Enable CRC mismatch interrupt." description="Enable CRC mismatch interrupt."/>
+						<p1:GCheck text="Enable configuration error interrupt" manifestObj="true" widgetName="gcheck_configuration_error_interrupt" bounds="10, 55, 214, 16" toolTipText="Enables the configuration error handling." description="Enables the configuration error handling."/>
+						<p1:GCheck text="Enable length error interrupt" manifestObj="true" widgetName="gcheck_length_error_interrupt" bounds="10, 87, 219, 16" toolTipText="Enables the length error interrupt handling." description="Enables the length error interrupt handling."/>
+						<p1:GCheck text="Enable bus error interrupt" manifestObj="true" widgetName="gcheck_bus_error_interrupt" bounds="11, 116, 214, 16" toolTipText="Enables the bus error handling." description="Enables the bus error handling."/>
+					</p1:GGroup>
+				</p1:Tab>
+			</p1:GTab.control>
+		</p1:GTab>
+	</p1:TabFolder>
+</p1:Tab>

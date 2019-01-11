@@ -1,0 +1,48 @@
+package Model.APPS.FCE_CONFIG.v4_0_6;
+
+// Import statements
+import ifx.davex.app.manifest.*
+
+abstract class FCE_CONFIG_GUI extends AppManifest {
+
+	/* IMPORTANT NOTE: This is an auto generated file, please do not edit manually. */
+	/* User modifications in the GUI editor will be updated here automatically.     */
+	/* Manually editing the contents of this file will corrupt the APP SDK project. */
+
+	/* Begin : UI variable section */
+	 public GTab gtab_General_Settings;
+	 public GTab gtab_Interrupt_Settings;
+	 public GCombo gcombo_crc_mode;
+	 public GCheck gcheck_input_bytewise;
+	 public GCheck gcheck_reflect_ouput_bitwise;
+	 public GCheck gcheck_ouput_xor;
+	 public GCheck gcheck_crc_mismatch_interrupt;
+	 public GCheck gcheck_configuration_error_interrupt;
+	 public GCheck gcheck_length_error_interrupt;
+	 public GCheck gcheck_bus_error_interrupt;
+	 public GLabel glabel_crc_mode;
+	 public GGroup ggroup_input_config;
+	 public GGroup ggroup_output_config;
+	 public GGroup ggroup_error_handling;
+
+	 public FCE_CONFIG_GUI(DaveEnv daveEnv){
+
+	 gtab_General_Settings = GTab(widgetName:"gtab_General_Settings", text:"General Settings", enabled:true, visible:true)
+	 gtab_Interrupt_Settings = GTab(widgetName:"gtab_Interrupt_Settings", text:"Interrupt Settings", enabled:true, visible:true)
+	 gcombo_crc_mode = GCombo(widgetName:"gcombo_crc_mode", options:["CRC8","CRC16","CRC32"], value:"CRC8", enabled:true, visible:true, isMandatoryValue:false)
+	 gcheck_input_bytewise = GCheck(widgetName:"gcheck_input_bytewise", value:false, enabled:true, visible:true)
+	 gcheck_reflect_ouput_bitwise = GCheck(widgetName:"gcheck_reflect_ouput_bitwise", value:false, enabled:true, visible:true)
+	 gcheck_ouput_xor = GCheck(widgetName:"gcheck_ouput_xor", value:false, enabled:true, visible:true)
+	 gcheck_crc_mismatch_interrupt = GCheck(widgetName:"gcheck_crc_mismatch_interrupt", value:false, enabled:true, visible:true)
+	 gcheck_configuration_error_interrupt = GCheck(widgetName:"gcheck_configuration_error_interrupt", value:false, enabled:true, visible:true)
+	 gcheck_length_error_interrupt = GCheck(widgetName:"gcheck_length_error_interrupt", value:false, enabled:true, visible:true)
+	 gcheck_bus_error_interrupt = GCheck(widgetName:"gcheck_bus_error_interrupt", value:false, enabled:true, visible:true)
+	 glabel_crc_mode = GLabel(widgetName:"glabel_crc_mode", text:"CRC mode:", enabled:true, visible:true)
+	 ggroup_input_config = GGroup(widgetName:"ggroup_input_config", text:"CRC Input Configuration", enabled:true, visible:true)
+	 ggroup_output_config = GGroup(widgetName:"ggroup_output_config", text:"CRC Output Configuration ", enabled:true, visible:true)
+	 ggroup_error_handling = GGroup(widgetName:"ggroup_error_handling", text:"Error Handling", enabled:true, visible:true)
+
+
+	 }
+	/* End : UI variable section */
+}

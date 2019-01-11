@@ -82,6 +82,16 @@ DAVE_STATUS_t DAVE_Init(void)
   {
 	 /**  Initialization of DIGITAL_IO APP instance DIGITAL_IO_1 */
 	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_1); 
+   } 
+  if (init_status == DAVE_STATUS_SUCCESS)
+  {
+	 /**  Initialization of GLOBAL_ADC APP instance GLOBAL_ADC_0 */
+	 init_status = (DAVE_STATUS_t)GLOBAL_ADC_Init(&GLOBAL_ADC_0); 
+   } 
+  if (init_status == DAVE_STATUS_SUCCESS)
+  {
+	 /**  Initialization of FCE_CONFIG APP instance FCE_CONFIG_0 */
+	 init_status = (DAVE_STATUS_t)FCE_CONFIG_Init(&FCE_CONFIG_0); 
    }  
   return init_status;
 } /**  End of function DAVE_Init */

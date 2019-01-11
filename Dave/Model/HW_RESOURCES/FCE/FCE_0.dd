@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ResourceModel:Peripheral xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ResourceModel="http://www.infineon.com/Davex/Resource.ecore" URI="http://resources/0.1.28/peripheral/fce/0" description="Flexible CRC Engine" baseAddress="0x50020000">
+  <provided xsi:type="ResourceModel:ResourceGroup" name="3" URI="http://resources/0.1.28/peripheral/fce/0/kernel/3">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/FCE_CONFIG/v4_0_6/FCE_CONFIG_0.app#//@hwResources.0"/>
+    <resourcesList name="ir" requiredResourceUri="http://resources/0.1.28/peripheral/fce/0/ir3"/>
+    <resourcesList name="res" requiredResourceUri="http://resources/0.1.28/peripheral/fce/0/res3"/>
+    <resourcesList name="cfg" requiredResourceUri="http://resources/0.1.28/peripheral/fce/0/cfg3"/>
+    <resourcesList name="sts" requiredResourceUri="http://resources/0.1.28/peripheral/fce/0/sts3"/>
+    <resourcesList name="length" requiredResourceUri="http://resources/0.1.28/peripheral/fce/0/length3"/>
+    <resourcesList name="check" requiredResourceUri="http://resources/0.1.28/peripheral/fce/0/check3"/>
+    <resourcesList name="crc" requiredResourceUri="http://resources/0.1.28/peripheral/fce/0/crc3"/>
+    <resourcesList name="ctr" requiredResourceUri="http://resources/0.1.28/peripheral/fce/0/ctr3"/>
+    <resourcesList name="int" requiredResourceUri="http://resources/0.1.28/peripheral/fce/0/int3"/>
+    <resourcesList name="global_signal" requiredResourceUri="http://resources/0.1.28/peripheral/fce/0/global_signal3"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="2" URI="http://resources/0.1.28/peripheral/fce/0/kernel/2">
+    <resourcesList name="ir" requiredResourceUri="http://resources/0.1.28/peripheral/fce/0/ir2"/>
+    <resourcesList name="res" requiredResourceUri="http://resources/0.1.28/peripheral/fce/0/res2"/>
+    <resourcesList name="cfg" requiredResourceUri="http://resources/0.1.28/peripheral/fce/0/cfg2"/>
+    <resourcesList name="sts" requiredResourceUri="http://resources/0.1.28/peripheral/fce/0/sts2"/>
+    <resourcesList name="length" requiredResourceUri="http://resources/0.1.28/peripheral/fce/0/length2"/>
+    <resourcesList name="check" requiredResourceUri="http://resources/0.1.28/peripheral/fce/0/check2"/>
+    <resourcesList name="crc" requiredResourceUri="http://resources/0.1.28/peripheral/fce/0/crc2"/>
+    <resourcesList name="ctr" requiredResourceUri="http://resources/0.1.28/peripheral/fce/0/ctr2"/>
+    <resourcesList name="int" requiredResourceUri="http://resources/0.1.28/peripheral/fce/0/int2"/>
+    <resourcesList name="global_signal" requiredResourceUri="http://resources/0.1.28/peripheral/fce/0/global_signal2"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="0" URI="http://resources/0.1.28/peripheral/fce/0/kernel/0">
+    <resourcesList name="ir" requiredResourceUri="http://resources/0.1.28/peripheral/fce/0/ir0"/>
+    <resourcesList name="res" requiredResourceUri="http://resources/0.1.28/peripheral/fce/0/res0"/>
+    <resourcesList name="cfg" requiredResourceUri="http://resources/0.1.28/peripheral/fce/0/cfg0"/>
+    <resourcesList name="sts" requiredResourceUri="http://resources/0.1.28/peripheral/fce/0/sts0"/>
+    <resourcesList name="length" requiredResourceUri="http://resources/0.1.28/peripheral/fce/0/length0"/>
+    <resourcesList name="check" requiredResourceUri="http://resources/0.1.28/peripheral/fce/0/check0"/>
+    <resourcesList name="crc" requiredResourceUri="http://resources/0.1.28/peripheral/fce/0/crc0"/>
+    <resourcesList name="ctr" requiredResourceUri="http://resources/0.1.28/peripheral/fce/0/ctr0"/>
+    <resourcesList name="int" requiredResourceUri="http://resources/0.1.28/peripheral/fce/0/int0"/>
+    <resourcesList name="global_signal" requiredResourceUri="http://resources/0.1.28/peripheral/fce/0/global_signal0"/>
+  </provided>
+  <addressBlock offset="0x0" size="0x4000" usage="registers"/>
+</ResourceModel:Peripheral>

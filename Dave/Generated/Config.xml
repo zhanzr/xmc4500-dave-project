@@ -47,6 +47,26 @@
                 <Type>C File</Type>
             </Source_File>
             <Source_File>
+                <File_Name>fce_config.c</File_Name>
+                <Path>\Dave\Generated\FCE_CONFIG\fce_config.c</Path>
+                <Type>C File</Type>
+            </Source_File>
+            <Source_File>
+                <File_Name>fce_config_conf.c</File_Name>
+                <Path>\Dave\Generated\FCE_CONFIG\fce_config_conf.c</Path>
+                <Type>C File</Type>
+            </Source_File>
+            <Source_File>
+                <File_Name>global_adc.c</File_Name>
+                <Path>\Dave\Generated\GLOBAL_ADC\global_adc.c</Path>
+                <Type>C File</Type>
+            </Source_File>
+            <Source_File>
+                <File_Name>global_adc_conf.c</File_Name>
+                <Path>\Dave\Generated\GLOBAL_ADC\global_adc_conf.c</Path>
+                <Type>C File</Type>
+            </Source_File>
+            <Source_File>
                 <File_Name>systimer.c</File_Name>
                 <Path>\Dave\Generated\SYSTIMER\systimer.c</Path>
                 <Type>C File</Type>
@@ -111,6 +131,36 @@
             <Header_File>
                 <File_Name>digital_io_extern.h</File_Name>
                 <Path>\Dave\Generated\DIGITAL_IO\digital_io_extern.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>fce_config.h</File_Name>
+                <Path>\Dave\Generated\FCE_CONFIG\fce_config.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>fce_config_conf.h</File_Name>
+                <Path>\Dave\Generated\FCE_CONFIG\fce_config_conf.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>fce_config_extern.h</File_Name>
+                <Path>\Dave\Generated\FCE_CONFIG\fce_config_extern.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>global_adc.h</File_Name>
+                <Path>\Dave\Generated\GLOBAL_ADC\global_adc.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>global_adc_conf.h</File_Name>
+                <Path>\Dave\Generated\GLOBAL_ADC\global_adc_conf.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>global_adc_extern.h</File_Name>
+                <Path>\Dave\Generated\GLOBAL_ADC\global_adc_extern.h</Path>
                 <Type>H File</Type>
             </Header_File>
             <Header_File>
