@@ -73,7 +73,7 @@ MEMORY
     DSRAM_2_comm(!RX) : ORIGIN = 0x30000000, LENGTH = 0x8000
 }
 
-stack_size = DEFINED(stack_size) ? stack_size : 8192;
+stack_size = DEFINED(stack_size) ? stack_size : 16384;
 no_init_size = 64;
 
 SECTIONS
