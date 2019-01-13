@@ -62,6 +62,89 @@ static void error(void)
 void test_whets(void);
 void test_whetd(void);
 
+#define	TEST_LOOP_N	2000000
+
+void __attribute__((section(".ram_code"))) test_div_psram(void)
+{
+	printf("%s %p\n", __func__, test_div_psram);
+
+	for(uint32_t i=0; i<TEST_LOOP_N; ++i)
+	{
+		//Test unsigned integer division
+		{
+			volatile uint32_t au = 101;
+			volatile uint32_t bu = 10;
+			volatile uint32_t cu = au/bu;
+			volatile uint32_t du = au%bu;
+
+			//		printf("%u %u -> %u %u\n",
+			//				au, bu, cu, du);
+		}
+
+		//Test signed integer division
+		{
+			volatile int32_t ai = 101;
+			volatile int32_t bi = 10;
+			volatile int32_t ci = ai/bi;
+			volatile int32_t di = ai%bi;
+
+			//		printf("%i %i -> %i %i\n",
+			//				ai, bi, ci, di);
+		}
+
+		//Test float division
+		{
+			volatile float af = 101.0;
+			volatile float bf = 10.0;
+			volatile float cf = af/bf;
+			//		float df = af%bf;
+
+			//		printf("%f %f -> %f\n",
+			//				af, bf, cf);
+		}
+	}
+}
+
+void test_div_flash(void)
+{
+	printf("%s %p\n", __func__, test_div_flash);
+
+	for(uint32_t i=0; i<TEST_LOOP_N; ++i)
+	{
+		//Test unsigned integer division
+		{
+			volatile uint32_t au = 101;
+			volatile uint32_t bu = 10;
+			volatile uint32_t cu = au/bu;
+			volatile uint32_t du = au%bu;
+
+			//		printf("%u %u -> %u %u\n",
+			//				au, bu, cu, du);
+		}
+
+		//Test signed integer division
+		{
+			volatile int32_t ai = 101;
+			volatile int32_t bi = 10;
+			volatile int32_t ci = ai/bi;
+			volatile int32_t di = ai%bi;
+
+			//		printf("%i %i -> %i %i\n",
+			//				ai, bi, ci, di);
+		}
+
+		//Test float division
+		{
+			volatile float af = 101.0;
+			volatile float bf = 10.0;
+			volatile float cf = af/bf;
+			//		float df = af%bf;
+
+			//		printf("%f %f -> %f\n",
+			//				af, bf, cf);
+		}
+	}
+}
 
 /**
 
@@ -73,77 +156,56 @@ void test_whetd(void);
  * code.
  */
 
- int main(void)
+int main(void)
 {
-	 DAVE_STATUS_t status;
+	DAVE_STATUS_t status;
 
-	 status = DAVE_Init();           /* Initialization of DAVE APPs  */
+	status = DAVE_Init();           /* Initialization of DAVE APPs  */
 
-	 XMC_SCU_EnableTemperatureSensor();
-	 XMC_SCU_StartTemperatureMeasurement();
+	XMC_SCU_EnableTemperatureSensor();
+	XMC_SCU_StartTemperatureMeasurement();
 
-	 if(status != DAVE_STATUS_SUCCESS)
-	 {
-		 /* Placeholder for error handler code. The while loop below can be replaced with an user error handler. */
-		 XMC_DEBUG("DAVE APPs initialization failed\n");
+	if(status != DAVE_STATUS_SUCCESS)
+	{
+		/* Placeholder for error handler code. The while loop below can be replaced with an user error handler. */
+		XMC_DEBUG("DAVE APPs initialization failed\n");
 
-		 while(1U)
-		 {
+		while(1U)
+		{
 
-		 }
-	 }
+		}
+	}
 
-	 printf("%u Hz, %08X, CM:%d, FPU_USED:%d\n",
-			 SystemCoreClock, SCB->CPUID,
-			 __CORTEX_M, __FPU_USED);
-	 printf("Boot Mode:%u\n", XMC_SCU_GetBootMode());
+	printf("%u Hz, %08X, CM:%d, FPU_USED:%d\n",
+			SystemCoreClock, SCB->CPUID,
+			__CORTEX_M, __FPU_USED);
+	printf("Boot Mode:%u\n", XMC_SCU_GetBootMode());
 
-	 // Create Software timer
+	uint32_t tick0;
+	uint32_t tick1;
+	uint32_t tick2;
+
+	tick0 = SYSTIMER_GetTickCount();
+	test_div_flash();
+	tick1 = SYSTIMER_GetTickCount();
+	test_div_psram();
+	tick2 = SYSTIMER_GetTickCount();
+
+	printf("%u %u\n", tick1-tick0, tick2-tick1);
+
+	// Create Software timer
 #define ONESEC	1000
-	 uint32_t TimerId = (uint32_t)SYSTIMER_CreateTimer(1000*SYSTIMER_TICK_PERIOD_US,
-			 SYSTIMER_MODE_PERIODIC,
-			 (void*)LED_Toggle_EverySec,NULL);
+	uint32_t TimerId = (uint32_t)SYSTIMER_CreateTimer(1000*SYSTIMER_TICK_PERIOD_US,
+			SYSTIMER_MODE_PERIODIC,
+			(void*)LED_Toggle_EverySec,NULL);
 
-	 SYSTIMER_Start();
-	 SYSTIMER_StartTimer(TimerId);
+	SYSTIMER_Start();
+	SYSTIMER_StartTimer(TimerId);
 
-	 //Test unsigned integer division
-	 {
-		 uint32_t au = 101;
-		 uint32_t bu = 10;
-		 uint32_t cu = au/bu;
-		 uint32_t du = au%bu;
-
-		 printf("%u %u -> %u %u\n",
-				 au, bu, cu, du);
-	 }
-
-	 //Test signed integer division
-	 {
-		 int32_t ai = 101;
-		 int32_t bi = 10;
-		 int32_t ci = ai/bi;
-		 int32_t di = ai%bi;
-
-		 printf("%i %i -> %i %i\n",
-				 ai, bi, ci, di);
-	 }
-
-	 //Test float division
-	 {
-		 float af = 101.0;
-		 float bf = 10.0;
-		 float cf = af/bf;
-		 //		float df = af%bf;
-
-		 printf("%f %f -> %f\n",
-				 af, bf, cf);
-	 }
-
-	 /* Placeholder for user application code. The while loop below can be replaced with user application code. */
-	 while(1U)
-	 {
-		 //		test_whets();
-		 //		test_whetd();
-	 }
+	/* Placeholder for user application code. The while loop below can be replaced with user application code. */
+	while(1U)
+	{
+		//		test_whets();
+		//		test_whetd();
+	}
 }
