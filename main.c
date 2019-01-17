@@ -16,6 +16,16 @@
 #include <xmc_scu.h>
 #include <xmc_fce.h>
 
+/* Kernel includes. */
+#include "FreeRTOS.h"
+#include "task.h"
+
+/* Set mainCREATE_SIMPLE_BLINKY_DEMO_ONLY to one to run the simple blinky demo,
+or 0 to run the more comprehensive test and demo application. */
+#define mainCREATE_SIMPLE_BLINKY_DEMO_ONLY	1
+
+/*-----------------------------------------------------------*/
+
 //Retarget IO
 int _write(int file, char *data, int len) {
 	int i;
@@ -146,6 +156,21 @@ void test_div_flash(void)
 	}
 }
 
+
+/*
+ * Set up the hardware ready to run this demo.
+ */
+static void prvSetupHardware( void );
+
+/*
+ * main_blinky() is used when mainCREATE_SIMPLE_BLINKY_DEMO_ONLY is set to 1.
+ * main_full() is used when mainCREATE_SIMPLE_BLINKY_DEMO_ONLY is set to 0.
+ */
+extern void main_blinky( void );
+extern void main_full( void );
+
+/*-----------------------------------------------------------*/
+
 /**
 
  * @brief main() - Application entry point
@@ -181,26 +206,41 @@ int main(void)
 			__CORTEX_M, __FPU_USED);
 	printf("Boot Mode:%u\n", XMC_SCU_GetBootMode());
 
-	uint32_t tick0;
-	uint32_t tick1;
-	uint32_t tick2;
+//	uint32_t tick0;
+//	uint32_t tick1;
+//	uint32_t tick2;
+//
+//	tick0 = SYSTIMER_GetTickCount();
+//	test_div_flash();
+//	tick1 = SYSTIMER_GetTickCount();
+//	test_div_psram();
+//	tick2 = SYSTIMER_GetTickCount();
+//
+//	printf("%u %u\n", tick1-tick0, tick2-tick1);
 
-	tick0 = SYSTIMER_GetTickCount();
-	test_div_flash();
-	tick1 = SYSTIMER_GetTickCount();
-	test_div_psram();
-	tick2 = SYSTIMER_GetTickCount();
+//	// Create Software timer
+//#define ONESEC	1000
+//	uint32_t TimerId = (uint32_t)SYSTIMER_CreateTimer(1000*SYSTIMER_TICK_PERIOD_US,
+//			SYSTIMER_MODE_PERIODIC,
+//			(void*)LED_Toggle_EverySec,NULL);
+//
+//	SYSTIMER_Start();
+//	SYSTIMER_StartTimer(TimerId);
 
-	printf("%u %u\n", tick1-tick0, tick2-tick1);
+	/* Prepare the hardware to run this demo. */
+	prvSetupHardware();
 
-	// Create Software timer
-#define ONESEC	1000
-	uint32_t TimerId = (uint32_t)SYSTIMER_CreateTimer(1000*SYSTIMER_TICK_PERIOD_US,
-			SYSTIMER_MODE_PERIODIC,
-			(void*)LED_Toggle_EverySec,NULL);
-
-	SYSTIMER_Start();
-	SYSTIMER_StartTimer(TimerId);
+	/* The mainCREATE_SIMPLE_BLINKY_DEMO_ONLY setting is described at the top
+	of this file. */
+	#if mainCREATE_SIMPLE_BLINKY_DEMO_ONLY == 1
+	{
+		main_blinky();
+	}
+	#else
+	{
+		main_full();
+	}
+	#endif
 
 	/* Placeholder for user application code. The while loop below can be replaced with user application code. */
 	while(1U)
@@ -209,3 +249,96 @@ int main(void)
 		//		test_whetd();
 	}
 }
+
+/*-----------------------------------------------------------*/
+
+static void prvSetupHardware( void )
+{
+//	configCONFIGURE_LED();
+
+	/* Ensure all priority bits are assigned as preemption priority bits. */
+	NVIC_SetPriorityGrouping( 0 );
+}
+/*-----------------------------------------------------------*/
+
+void vApplicationMallocFailedHook( void )
+{
+	/* vApplicationMallocFailedHook() will only be called if
+	configUSE_MALLOC_FAILED_HOOK is set to 1 in FreeRTOSConfig.h.  It is a hook
+	function that will get called if a call to pvPortMalloc() fails.
+	pvPortMalloc() is called internally by the kernel whenever a task, queue,
+	timer or semaphore is created.  It is also called by various parts of the
+	demo application.  If heap_1.c or heap_2.c are used, then the size of the
+	heap available to pvPortMalloc() is defined by configTOTAL_HEAP_SIZE in
+	FreeRTOSConfig.h, and the xPortGetFreeHeapSize() API function can be used
+	to query the size of free heap space that remains (although it does not
+	provide information on how the remaining heap might be fragmented). */
+	taskDISABLE_INTERRUPTS();
+	for( ;; );
+}
+/*-----------------------------------------------------------*/
+
+void vApplicationIdleHook( void )
+{
+	/* vApplicationIdleHook() will only be called if configUSE_IDLE_HOOK is set
+	to 1 in FreeRTOSConfig.h.  It will be called on each iteration of the idle
+	task.  It is essential that code added to this hook function never attempts
+	to block in any way (for example, call xQueueReceive() with a block time
+	specified, or call vTaskDelay()).  If the application makes use of the
+	vTaskDelete() API function (as this demo application does) then it is also
+	important that vApplicationIdleHook() is permitted to return to its calling
+	function, because it is the responsibility of the idle task to clean up
+	memory allocated by the kernel to any task that has since been deleted. */
+}
+/*-----------------------------------------------------------*/
+
+void vApplicationStackOverflowHook( TaskHandle_t pxTask, char *pcTaskName )
+{
+	( void ) pcTaskName;
+	( void ) pxTask;
+
+	/* Run time stack overflow checking is performed if
+	configCHECK_FOR_STACK_OVERFLOW is defined to 1 or 2.  This hook
+	function is called if a stack overflow is detected. */
+	taskDISABLE_INTERRUPTS();
+	for( ;; );
+}
+/*-----------------------------------------------------------*/
+
+void vApplicationTickHook( void )
+{
+	/* This function will be called by each tick interrupt if
+	configUSE_TICK_HOOK is set to 1 in FreeRTOSConfig.h.  User code can be
+	added here, but the tick hook is called from an interrupt context, so
+	code must not attempt to block, and only the interrupt safe FreeRTOS API
+	functions can be used (those that end in FromISR()). */
+}
+/*-----------------------------------------------------------*/
+
+#ifdef JUST_AN_EXAMPLE_ISR
+
+void Dummy_IRQHandler(void)
+{
+long lHigherPriorityTaskWoken = pdFALSE;
+
+	/* Clear the interrupt if necessary. */
+	Dummy_ClearITPendingBit();
+
+	/* This interrupt does nothing more than demonstrate how to synchronise a
+	task with an interrupt.  A semaphore is used for this purpose.  Note
+	lHigherPriorityTaskWoken is initialised to zero. */
+	xSemaphoreGiveFromISR( xTestSemaphore, &lHigherPriorityTaskWoken );
+
+	/* If there was a task that was blocked on the semaphore, and giving the
+	semaphore caused the task to unblock, and the unblocked task has a priority
+	higher than the current Running state task (the task that this interrupt
+	interrupted), then lHigherPriorityTaskWoken will have been set to pdTRUE
+	internally within xSemaphoreGiveFromISR().  Passing pdTRUE into the
+	portEND_SWITCHING_ISR() macro will result in a context switch being pended to
+	ensure this interrupt returns directly to the unblocked, higher priority,
+	task.  Passing pdFALSE into portEND_SWITCHING_ISR() has no effect. */
+	portEND_SWITCHING_ISR( lHigherPriorityTaskWoken );
+}
+
+#endif /* JUST_AN_EXAMPLE_ISR */
+

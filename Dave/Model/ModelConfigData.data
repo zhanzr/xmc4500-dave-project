@@ -6,9 +6,6 @@
   <nodes xsi:type="ApplicationModel:AppNode">
     <resource xsi:type="ResourceModel:App" href="APPS/CLOCK_XMC4/v4_0_22/CLOCK_XMC4_0.app#/"/>
   </nodes>
-  <nodes xsi:type="ApplicationModel:AppNode">
-    <resource xsi:type="ResourceModel:App" href="APPS/SYSTIMER/v4_1_16/SYSTIMER_0.app#/"/>
-  </nodes>
   <nodes xsi:type="ApplicationModel:PeripheralNode">
     <resource xsi:type="ResourceModel:Peripheral" href="HW_RESOURCES/CPU/CPU_0.dd#/"/>
   </nodes>
@@ -51,9 +48,7 @@
   <nodes xsi:type="ApplicationModel:PeripheralNode">
     <resource xsi:type="ResourceModel:Peripheral" href="HW_RESOURCES/FCE/FCE_0.dd#/"/>
   </nodes>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.2" target="//@nodes.1"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.2" target="//@nodes.0"/>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.12" target="//@nodes.1"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.11" target="//@nodes.1"/>
   <hwConnections href="APPS/CPU_CTRL_XMC4/v4_0_16/CPU_CTRL_XMC4_0.app#//@connections.7"/>
   <hwConnections href="APPS/CPU_CTRL_XMC4/v4_0_16/CPU_CTRL_XMC4_0.app#//@connections.8"/>
   <hwConnections href="APPS/CPU_CTRL_XMC4/v4_0_16/CPU_CTRL_XMC4_0.app#//@connections.9"/>

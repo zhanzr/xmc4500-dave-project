@@ -70,11 +70,6 @@ DAVE_STATUS_t DAVE_Init(void)
 
   if (init_status == DAVE_STATUS_SUCCESS)
   {
-	 /**  Initialization of SYSTIMER APP instance SYSTIMER_0 */
-	 init_status = (DAVE_STATUS_t)SYSTIMER_Init(&SYSTIMER_0); 
-   } 
-  if (init_status == DAVE_STATUS_SUCCESS)
-  {
 	 /**  Initialization of DIGITAL_IO APP instance DIGITAL_IO_0 */
 	 init_status = (DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_0); 
    } 
