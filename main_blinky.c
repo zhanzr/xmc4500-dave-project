@@ -64,6 +64,8 @@
 
 /* Standard includes. */
 #include <stdio.h>
+#include <stdint.h>
+#include <stdbool.h>
 
 /* Kernel includes. */
 #include "FreeRTOS.h"
@@ -71,8 +73,9 @@
 #include "semphr.h"
 
 /* Priorities at which the tasks are created. */
-#define mainQUEUE_RECEIVE_TASK_PRIORITY		( tskIDLE_PRIORITY + 2 )
-#define	mainQUEUE_SEND_TASK_PRIORITY		( tskIDLE_PRIORITY + 1 )
+#define mainQUEUE_RECEIVE_TASK_PRIORITY		( tskIDLE_PRIORITY + 3 )
+#define	mainQUEUE_SEND_TASK_PRIORITY		( tskIDLE_PRIORITY + 2 )
+#define	mainSIMPLE_PRINT_TASK_PRIORITY		( tskIDLE_PRIORITY + 1 )
 
 /* The rate at which data is sent to the queue.  The 200ms value is converted
 to ticks using the portTICK_PERIOD_MS constant. */
@@ -107,6 +110,49 @@ void main_blinky( void );
 /* The queue used by both tasks. */
 static QueueHandle_t xQueue = NULL;
 
+static volatile uint32_t g_test_sema32 = 1;
+
+/*-----------------------------------------------------------*/
+//
+void simple_print_task(void *pvParameters){
+	uint32_t para_u32 = (uint32_t)pvParameters;
+
+	while(true){
+		printf("%s %08X %08X\n", __func__,  para_u32, xTaskGetTickCount());
+		vTaskDelay( ( 1 / portTICK_PERIOD_MS ) );
+	}
+}
+
+void sema_print_task(void *pvParameters){
+	uint32_t para_u32 = (uint32_t)pvParameters;
+
+	while(true){
+		uint32_t sema_32 = __LDREXW(&g_test_sema32);
+		if(0==sema_32){
+			//Semaphore taken by others
+			__CLREX();
+			continue;
+		}else{
+			uint32_t taken_res = __STREXW (sema_32-1, &g_test_sema32);
+			if(0==taken_res){
+				//Taken successfully
+				printf("%s %08X %08X\n", __func__,  para_u32, xTaskGetTickCount());
+
+				//Release the semaphore
+				do{
+					sema_32 = __LDREXW(&g_test_sema32);
+					taken_res = __STREXW (sema_32+1, &g_test_sema32);
+				}while(0!=taken_res);
+
+				vTaskDelay( ( 1 / portTICK_PERIOD_MS ) );
+			}else{
+				//Taken interrupted, no clrex needed here
+				continue;
+			}
+		}
+	}
+}
+
 /*-----------------------------------------------------------*/
 
 void main_blinky( void )
@@ -127,6 +173,33 @@ void main_blinky( void )
 
 		xTaskCreate( prvQueueSendTask, "TX", configMINIMAL_STACK_SIZE*4, ( void * ) mainQUEUE_SEND_PARAMETER, mainQUEUE_SEND_TASK_PRIORITY, NULL );
 
+//		xTaskCreate( simple_print_task,
+//							"s_print", 									/* The text name assigned to the task - for debug only as it is not used by the kernel. */
+//							configMINIMAL_STACK_SIZE*2, 				/* The size of the stack to allocate to the task. */
+//							( void * ) 1, /* The parameter passed to the task - just to check the functionality. */
+//							mainSIMPLE_PRINT_TASK_PRIORITY, 		/* The priority assigned to the task. */
+//							NULL );									/* The task handle is not required, so NULL is passed. */
+//
+//		xTaskCreate( simple_print_task,
+//							"s_print", 									/* The text name assigned to the task - for debug only as it is not used by the kernel. */
+//							configMINIMAL_STACK_SIZE*2, 				/* The size of the stack to allocate to the task. */
+//							( void * ) 2, /* The parameter passed to the task - just to check the functionality. */
+//							mainSIMPLE_PRINT_TASK_PRIORITY, 		/* The priority assigned to the task. */
+//							NULL );
+
+		xTaskCreate( sema_print_task,
+							"m_print", 									/* The text name assigned to the task - for debug only as it is not used by the kernel. */
+							configMINIMAL_STACK_SIZE*2, 				/* The size of the stack to allocate to the task. */
+							( void * ) 3, /* The parameter passed to the task - just to check the functionality. */
+							mainSIMPLE_PRINT_TASK_PRIORITY, 		/* The priority assigned to the task. */
+							NULL );									/* The task handle is not required, so NULL is passed. */
+
+		xTaskCreate( sema_print_task,
+							"m_print", 									/* The text name assigned to the task - for debug only as it is not used by the kernel. */
+							configMINIMAL_STACK_SIZE*2, 				/* The size of the stack to allocate to the task. */
+							( void * ) 4, /* The parameter passed to the task - just to check the functionality. */
+							mainSIMPLE_PRINT_TASK_PRIORITY, 		/* The priority assigned to the task. */
+							NULL );
 		/* Start the tasks and timer running. */
 		vTaskStartScheduler();
 	}

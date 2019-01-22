@@ -43,8 +43,11 @@ int _write(int file, char *data, int len) {
 	return len;
 }
 
-void LED_Toggle_EverySec(void)
-{
+void TestFunct(void){
+	printf("CPUID:%08X\n", SCB->CPUID);
+}
+
+void LED_Toggle_EverySec(void){
 	DIGITAL_IO_ToggleOutput(&DIGITAL_IO_0);
 	DIGITAL_IO_ToggleOutput(&DIGITAL_IO_1);
 	//	printf("%u Hz, %08X\n", SystemCoreClock, SCB->CPUID);
@@ -57,6 +60,18 @@ void LED_Toggle_EverySec(void)
 	float tmpV13 = XMC_SCU_POWER_GetEVR13Voltage();
 	float tmpV33 = XMC_SCU_POWER_GetEVR33Voltage();
 	printf("%f %f\n", tmpV13, tmpV33);
+
+	printf("Part 1\n");
+	printf("Test 1 Result:%u\n", asm_get_8bit_number());
+	printf("Test 2 Result:%08X\t[%08X]\n", asm_get_xor(0x12345678, 0x34567890), 0x12345678^0x34567890);
+	printf("Test 3 Direct Jump:%08X\n", TestFunct);
+	printf("Jump 1, Before.%08X\n", __get_MSP());
+	asm_direct_jump_1(TestFunct);
+	printf("Jump 1, After.%08X\n\n", __get_MSP());
+
+	printf("Jump 2, Before.%08X\n", __get_MSP());
+	asm_direct_jump_2(TestFunct);
+	printf("Jump 2, After.%08X\n\n", __get_MSP());
 
 	XMC_SCU_StartTemperatureMeasurement();
 }
@@ -75,7 +90,7 @@ void test_whetd(void);
 #define	TEST_LOOP_N	2000000
 
 void __attribute__((section(".ram_code"))) test_div_psram(void)
-{
+		{
 	printf("%s %p\n", __func__, test_div_psram);
 
 	for(uint32_t i=0; i<TEST_LOOP_N; ++i)
@@ -113,7 +128,7 @@ void __attribute__((section(".ram_code"))) test_div_psram(void)
 			//				af, bf, cf);
 		}
 	}
-}
+		}
 
 void test_div_flash(void)
 {
@@ -195,9 +210,7 @@ int main(void)
 		/* Placeholder for error handler code. The while loop below can be replaced with an user error handler. */
 		XMC_DEBUG("DAVE APPs initialization failed\n");
 
-		while(1U)
-		{
-
+		while(1U){
 		}
 	}
 
@@ -206,41 +219,41 @@ int main(void)
 			__CORTEX_M, __FPU_USED);
 	printf("Boot Mode:%u\n", XMC_SCU_GetBootMode());
 
-//	uint32_t tick0;
-//	uint32_t tick1;
-//	uint32_t tick2;
-//
-//	tick0 = SYSTIMER_GetTickCount();
-//	test_div_flash();
-//	tick1 = SYSTIMER_GetTickCount();
-//	test_div_psram();
-//	tick2 = SYSTIMER_GetTickCount();
-//
-//	printf("%u %u\n", tick1-tick0, tick2-tick1);
+	//	uint32_t tick0;
+	//	uint32_t tick1;
+	//	uint32_t tick2;
+	//
+	//	tick0 = SYSTIMER_GetTickCount();
+	//	test_div_flash();
+	//	tick1 = SYSTIMER_GetTickCount();
+	//	test_div_psram();
+	//	tick2 = SYSTIMER_GetTickCount();
+	//
+	//	printf("%u %u\n", tick1-tick0, tick2-tick1);
 
-//	// Create Software timer
-//#define ONESEC	1000
-//	uint32_t TimerId = (uint32_t)SYSTIMER_CreateTimer(1000*SYSTIMER_TICK_PERIOD_US,
-//			SYSTIMER_MODE_PERIODIC,
-//			(void*)LED_Toggle_EverySec,NULL);
-//
-//	SYSTIMER_Start();
-//	SYSTIMER_StartTimer(TimerId);
+	//	// Create Software timer
+	//#define ONESEC	1000
+	//	uint32_t TimerId = (uint32_t)SYSTIMER_CreateTimer(1000*SYSTIMER_TICK_PERIOD_US,
+	//			SYSTIMER_MODE_PERIODIC,
+	//			(void*)LED_Toggle_EverySec,NULL);
+	//
+	//	SYSTIMER_Start();
+	//	SYSTIMER_StartTimer(TimerId);
 
 	/* Prepare the hardware to run this demo. */
 	prvSetupHardware();
 
 	/* The mainCREATE_SIMPLE_BLINKY_DEMO_ONLY setting is described at the top
 	of this file. */
-	#if mainCREATE_SIMPLE_BLINKY_DEMO_ONLY == 1
+#if mainCREATE_SIMPLE_BLINKY_DEMO_ONLY == 1
 	{
 		main_blinky();
 	}
-	#else
+#else
 	{
 		main_full();
 	}
-	#endif
+#endif
 
 	/* Placeholder for user application code. The while loop below can be replaced with user application code. */
 	while(1U)
@@ -254,7 +267,7 @@ int main(void)
 
 static void prvSetupHardware( void )
 {
-//	configCONFIGURE_LED();
+	//	configCONFIGURE_LED();
 
 	/* Ensure all priority bits are assigned as preemption priority bits. */
 	NVIC_SetPriorityGrouping( 0 );
@@ -319,7 +332,7 @@ void vApplicationTickHook( void )
 
 void Dummy_IRQHandler(void)
 {
-long lHigherPriorityTaskWoken = pdFALSE;
+	long lHigherPriorityTaskWoken = pdFALSE;
 
 	/* Clear the interrupt if necessary. */
 	Dummy_ClearITPendingBit();

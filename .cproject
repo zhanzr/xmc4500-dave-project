@@ -185,8 +185,11 @@
 							<tool id="com.ifx.xmc4000.printsize.1032025052" name="ARM-GCC Print Size" superClass="com.ifx.xmc4000.printsize"/>
 						</toolChain>
 					</folderInfo>
+					<fileInfo id="com.ifx.xmc4000.appDebug.341024911.1756172979" name="cortex_m0_test_8.S" rcbsApplicability="disable" resourcePath="asm/cortex_m0_test_8.S" toolsToInvoke="com.ifx.xmc4000.appDebug.assembler.190763372.203599185">
+						<tool id="com.ifx.xmc4000.appDebug.assembler.190763372.203599185" name="ARM-GCC Assembler" superClass="com.ifx.xmc4000.appDebug.assembler.190763372"/>
+					</fileInfo>
 					<sourceEntries>
-						<entry excluding="Dave/Model" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="asm/cortex_m0_test_8.S|asm/cortex_m0_test_7.S|Dave/Model" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -224,4 +227,5 @@
 			<resource resourceType="PROJECT" workspacePath="/xmc4500_t1"/>
 		</configuration>
 	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
 </cproject>
