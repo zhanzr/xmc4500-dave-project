@@ -214,6 +214,8 @@ int main(void)
 		}
 	}
 
+//	SEGGER_RTT_Write(0, "test", 4);
+
 	printf("%u Hz, %08X, CM:%d, FPU_USED:%d\n",
 			SystemCoreClock, SCB->CPUID,
 			__CORTEX_M, __FPU_USED);
