@@ -2,6 +2,13 @@
 // File: cortex_m0_test_1.S
 // Compiler: arm-none-eabi-gcc
 //******************************************************************************
+//Description: Instruction Test 1
+//Move
+//Operation              Description Assembler   Cycles
+//8-bit immediate        MOVS Rd, #<imm>         1
+//Lo to Lo               MOVS Rd, Rm             1
+//Any to Any             MOV Rd, Rm              1
+//Any to PC              MOV PC, Rm              3
     .thumb
 
     .global asm_get_8bit_number

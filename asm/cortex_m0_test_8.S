@@ -2,12 +2,20 @@
 // File: cortex_m0_test_8.S
 // Compiler: arm-none-eabi-gcc
 //******************************************************************************
+//Description: Instruction Test 8
+//State change, Others
+//Operation                          Description Assembler   Cycles
+//Supervisor Call                    SVC #<imm>              - e
+//Disable interrupts                 CPSID i                 1
+//Enable interrupts                  CPSIE i                 1
+//Read special register              MRS Rd, <specreg>       4
+//Write special register             MSR <specreg>, Rn       4
     .thumb
 
-    .global asm_get_8bit_number
-    .global asm_get_xor
-    .global asm_direct_jump_1
-    .global asm_direct_jump_2
+    .global asm_svc_1
+    .global asm_test_msr
+    .global asm_test_mrs
+
 
 #define inputA          r0
 #define inputB          r1
@@ -15,25 +23,25 @@
 
     .align 4
 
-//Get an 8bit immediate number
-asm_get_8bit_number:
-    MOVS r0, #234
+//Supervisor Call
+asm_svc_1:
+    SVC #1
     bx lr
 
-//Get the XOR result
-asm_get_xor:
-    eor r1, r0, r1
-    movs r0, r1
+//Test special register write
+//special register is one of the special-purpose registers: APSR, IPSR, EPSR, IEPSR, IAPSR,
+//EAPSR, PSR, MSP, PSP, PRIMASK, or CONTROL.
+asm_test_msr:
+    //Write 0x00000001 to disable all exceptions with configurable priority
+    //Write 0x00000000 to enable all exceptions with configurable priority
+    MSR PRIMASK,r0
     bx lr
 
-//Direct Jump Test 1
-asm_direct_jump_1:
-//The following line will get warning:
-//MOV pc,<rn> instruction used, but BX <rn> is preferred
-    mov PC,r0
-
-//Direct Jump Test 2
-asm_direct_jump_2:
-    bx r0
+//Test special register read
+//special register is one of the special-purpose registers: APSR, IPSR, EPSR, IEPSR, IAPSR,
+//EAPSR, PSR, MSP, PSP, PRIMASK, or CONTROL.
+asm_test_mrs:
+    MRS r0, PRIMASK
+    bx lr
 
     .end

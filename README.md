@@ -1,76 +1,87 @@
 XMC4500 Relax Lite Kit. Dave project Demo.
+ASM Test 1 Result:127
+ASM Test 2 Result:26622EE8  [26622EE8]
+ASM Test 3 Direct Jump:08004029
+Jump 1, Before.10003FE0
+CPUID:410FC241
+Jump 1, After.10003FE0
 
-with semaphore:
-sema_print_task 00000003 0000094E
-sema_print_task 00000004 0000094E
-sema_print_task 00000003 00000950
-sema_print_task 00000004 00000951
-sema_print_task 00000003 00000951
-sema_print_task 00000004 00000953
-sema_print_task 00000003 00000954
-sema_print_task 00000004 00000954
-sema_print_task 00000003 00000956
-sema_print_task 00000004 00000957
-sema_print_task 00000003 00000957
-sema_print_task 00000004 00000959
-sema_print_task 00000003 0000095A
-sema_print_task 00000004 0000095A
-sema_print_task 00000003 0000095C
-sema_print_task 00000004 0000095D
-sema_print_task 00000003 0000095D
-sema_print_task 00000004 0000095F
-sema_print_task 00000003 00000960
-sema_print_task 00000004 00000960
-sema_print_task 00000003 00000962
-sema_print_task 00000004 00000963
-sema_print_task 00000003 00000963
-sema_print_task 00000004 00000965
-sema_print_task 00000003 00000966
-sema_print_task 00000004 00000966
-sema_print_task 00000003 00000968
+Jump 2, Before.10003FE0
+CPUID:410FC241
+Jump 2, After.10003FE0
 
-without semaphore:
-simple_print_task 00000002 00000A88
-simple_print_task 00000simple_print_task 00000002 00000A89
-002 00000A89
-simple_print_task 00000002 00000A8A
-simple_print_tasimple_print_task 00000002 00000A8B
-sk 00000002 00simple_print_task 00000002 00000A8C
-000A8C
-simple_print_task 00000002 00000A8D
-simple_print_task 000simple_print_task 00000002 00000A8E
-00002 00000A8Esimple_print_task 00000002 00000A8F
+ASM Test 4 :36  [36]
+ASM Test 5 :579 [579]
+ASM Test 6 :7   [7]
+ASM Test 7 :14  [14]
+ASM Test 8 :-333    [-333]
+ASM Test 9 :-1024   [-1024]
+ASM Test 10 Result:56088    [56088]
+A:87
+M:88
+10 2 5
+ASM Test 11 Result:0    [0]
+ASM Test 12 Result:1    [1]
+ASM Test 13 Result:10145010 [10145010]
+ASM Test 14 Result:36767EF8 [36767EF8]
+ASM Test 15 Result:EDCBA987 [EDCBA988]
+ASM Test 20 Result:12345678 [12345678]
+ASM Test 21 Result:78904563 [78904563]
+ASM Test 22 Result:1039 [1039]
+Part 7
+ASM Test 23 Result:FFFF8001 [00008001]
+ASM Test 24 Result:FFFFFFC4 [000000C4]
+ASM Test 25 Result:00008001 [00008001]
+ASM Test 26 Result:C8563412 [C8563412]
+ASM Test 27 Result:3412C856 [3412C856]
+ASM Test 28 Result:FFFFC856 [FFFFC856]
+Part 8
+ASM Test 29, Before SVC #1
+After SVC #1
+ASM Test 30 Result:00000000
+ASM Test 31 Tick:72076
+00000001    00000000
+34.634148
+1.305000 3.285000
+ASM Test 1 Result:127
+ASM Test 2 Result:26622EE8  [26622EE8]
+ASM Test 3 Direct Jump:08004029
+Jump 1, Before.10003FE0
+CPUID:410FC241
+Jump 1, After.10003FE0
 
-simple_print_task 00000002 00000A90
-simple_print_task 00000simple_print_task 00000002 00000A91
-002 00000A91
-simple_print_task 00000002 00000A92
-simple_print_tasimple_print_task 00000002 00000A93
-sk 00000002 00simple_print_task 00000002 00000A94
-000A94
-simple_print_task 00000002 00000A95
-simple_print_task 000simple_print_task 00000002 00000A96
-00002 00000A96simple_print_task 00000002 00000A97
+Jump 2, Before.10003FE0
+CPUID:410FC241
+Jump 2, After.10003FE0
 
-simple_print_task 00000002 00000A98
-simple_print_task 00000simple_print_task 00000002 00000A99
-002 00000A99
-simple_print_task 00000002 00000A9A
-simple_print_tasimple_print_task 00000002 00000A9B
-sk 00000002 00simple_print_task 00000002 00000A9C
-000A9C
-simple_print_task 00000002 00000A9D
-simple_print_task 000simple_print_task 00000002 00000A9E
-00002 00000A9Esimple_print_task 00000002 00000A9F
-
-simple_print_task 00000002 00000AA0
-simple_print_task 00000simple_print_task 00000002 00000AA1
-002 00000AA1
-simple_print_task 00000002 00000AA2
-simple_print_tasimple_print_task 00000002 00000AA3
-sk 00000002 00simple_print_task 00000002 00000AA4
-000AA4
-simple_print_task 00000002 00000AA5
-simple_print_task 000simple_print_task 00000002 00000AA6
-00002 00000AA6simple_print_task 00000002 00000AA7
-
+ASM Test 4 :36  [36]
+ASM Test 5 :579 [579]
+ASM Test 6 :7   [7]
+ASM Test 7 :14  [14]
+ASM Test 8 :-333    [-333]
+ASM Test 9 :-1024   [-1024]
+ASM Test 10 Result:56088    [56088]
+A:87
+M:88
+10 2 5
+ASM Test 11 Result:0    [0]
+ASM Test 12 Result:1    [1]
+ASM Test 13 Result:10145010 [10145010]
+ASM Test 14 Result:36767EF8 [36767EF8]
+ASM Test 15 Result:EDCBA987 [EDCBA988]
+ASM Test 20 Result:12345678 [12345678]
+ASM Test 21 Result:78904563 [78904563]
+ASM Test 22 Result:1039 [1039]
+Part 7
+ASM Test 23 Result:FFFF8001 [00008001]
+ASM Test 24 Result:FFFFFFC4 [000000C4]
+ASM Test 25 Result:00008001 [00008001]
+ASM Test 26 Result:C8563412 [C8563412]
+ASM Test 27 Result:3412C856 [3412C856]
+ASM Test 28 Result:FFFFC856 [FFFFC856]
+Part 8
+ASM Test 29, Before SVC #1
+After SVC #1
+ASM Test 30 Result:00000000
+ASM Test 31 Tick:98235
+00000001    00000000

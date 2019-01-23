@@ -2,7 +2,6 @@
 // File: cortex_m0_test_7.S
 // Compiler: arm-none-eabi-gcc
 //******************************************************************************
-    .thumb
 //Description: Instruction Test 7
 //Extend, Reverse
 //Operation                          Description Assembler   Cycles
@@ -13,77 +12,55 @@
 //Bytes in word                      REV Rd, Rm              1
 //Bytes in both halfwords            REV16 Rd, Rm            1
 //Signed bottom half word            REVSH Rd, Rm            1
+    .thumb
 
-    AREA    |.text|, CODE, READONLY
+    .global asm_s16ext
+    .global asm_s8ext
+    .global asm_u16ext
+    .global asm_u8ext
+    .global asm_rev
+    .global asm_rev16
+    .global asm_revsh
+
+#define inputA          r0
+#define inputB          r1
+#define result          r0
+
+    .align 4
 
 //Signed halfword to word
-    ALIGN
-asm_s16ext FUNCTION
-    EXPORT asm_s16ext
-
+asm_s16ext:
     SXTH r0, r0
     bx lr
 
-    ENDP
-
 //Signed byte to word
-    ALIGN
-asm_s8ext FUNCTION
-    EXPORT asm_s8ext
-
+asm_s8ext:
     SXTB r0, r0
     bx lr
 
-    ENDP
-
 //Unsigned halfword to word
-    ALIGN
-asm_u16ext FUNCTION
-    EXPORT asm_u16ext
-
+asm_u16ext:
     UXTH r0, r0
     bx lr
 
-    ENDP
-
 //Unsigned byte to word
-    ALIGN
-asm_u8ext FUNCTION
-    EXPORT asm_u8ext
-
+asm_u8ext:
     UXTB r0, r0
     bx lr
 
-    ENDP
-
 //Reverse Bytes in word
-    ALIGN
-asm_rev FUNCTION
-    EXPORT asm_rev
-
+asm_rev:
     REV r0, r0
     bx lr
 
-    ENDP
-
 //Reverse Bytes in both halfwords
-    ALIGN
-asm_rev16 FUNCTION
-    EXPORT asm_rev16
-
+asm_rev16:
     REV16 r0, r0
     bx lr
 
-    ENDP
-
 //Reverse Signed bottom half word
-    ALIGN
-asm_revsh FUNCTION
-    EXPORT asm_revsh
-
+asm_revsh:
     REVSH r0, r0
     bx lr
 
-    ENDP
-
-    END
+    .end

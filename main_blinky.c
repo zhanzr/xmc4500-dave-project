@@ -119,7 +119,7 @@ void simple_print_task(void *pvParameters){
 
 	while(true){
 		printf("%s %08X %08X\n", __func__,  para_u32, xTaskGetTickCount());
-		vTaskDelay( ( 1 / portTICK_PERIOD_MS ) );
+		vTaskDelay( ( 5000 / portTICK_PERIOD_MS ) );
 	}
 }
 
@@ -144,7 +144,7 @@ void sema_print_task(void *pvParameters){
 					taken_res = __STREXW (sema_32+1, &g_test_sema32);
 				}while(0!=taken_res);
 
-				vTaskDelay( ( 1 / portTICK_PERIOD_MS ) );
+				vTaskDelay( ( 5000 / portTICK_PERIOD_MS ) );
 			}else{
 				//Taken interrupted, no clrex needed here
 				continue;

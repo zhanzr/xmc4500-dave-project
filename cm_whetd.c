@@ -31,9 +31,9 @@ static void P0(void);
 static void P3(double *X, double *Y, double *Z);
 static void POUT(int N, int J, int K, double X1, double X2, double X3, double X4);
 
-static inline double dtime (void)
-{
-        return SYSTIMER_GetTickCount() / (1000.0);
+static inline double dtime (void){
+//        return SYSTIMER_GetTickCount() / (1000.0);
+        return xTaskGetTickCount() / (1000.0);
 }
 
 void test_whetd (void) {
