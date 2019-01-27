@@ -147,7 +147,7 @@ void LED_Toggle_EverySec(void){
 	//Part 8: Test SVC, MSR, MRS
 	printf("Part 8\n");
 	printf("ASM Test 29, Before SVC\n");
-//	asm_svc_1(1000);
+	//	asm_svc_1(1000);
 	printf("After SVC\n");
 
 	printf("ASM Test 30 Result:%08X\n", asm_test_mrs());
@@ -193,7 +193,45 @@ void LED_Toggle_EverySec(void){
 		printf("QSUB %i-%i = %i\n", ai, bi, asm_qsub(ai, bi));
 	}
 
-	__SSAT(ai);
+	{
+		uint32_t au = 0;
+		uint32_t res = asm_test_tbb(au);
+		printf("%u %u\n", au, res);
+
+		au = 1;
+		res = asm_test_tbb(au);
+		printf("%u %u\n", au, res);
+
+		au = 2;
+		res = asm_test_tbb(au);
+		printf("%u %u\n", au, res);
+
+		au = 3;
+		res = asm_test_tbb(au);
+		printf("%u %u\n", au, res);
+
+		//index exceed the table will incur a usage fault
+		//		au = 4;
+		//		res = asm_test_tbb(au);
+		//		printf("%u %u\n", au, res);
+
+		au = 0;
+		res = asm_test_tbh(au);
+		printf("%u %u\n", au, res);
+
+		au = 1;
+		res = asm_test_tbh(au);
+		printf("%u %u\n", au, res);
+
+		au = 2;
+		res = asm_test_tbh(au);
+		printf("%u %u\n", au, res);
+
+		//index exceed the table will incur a usage fault
+//		au = 3;
+//		res = asm_test_tbh(au);
+//		printf("%u %u\n", au, res);
+	}
 
 	XMC_SCU_StartTemperatureMeasurement();
 }

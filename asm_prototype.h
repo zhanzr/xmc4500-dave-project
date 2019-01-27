@@ -145,4 +145,6 @@ extern int32_t asm_qsub(int32_t inA, int32_t inB);
 extern pack32 asm_uqadd16(pack32 inA, pack32 inB);
 extern pack32 asm_uqsub16(pack32 inA, pack32 inB);
 
+extern uint32_t asm_test_tbb(uint32_t inA);
+
 #endif /* ASM_PROTOTYPE_H_ */

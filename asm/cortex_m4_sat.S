@@ -24,7 +24,7 @@
         .syntax unified
         .thumb
 
-        .file   "SVC_Table.S"
+        .file   "cortex_m4_sat.S"
 
 //        .section ".svc_table"
         .section ".text"
