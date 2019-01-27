@@ -158,6 +158,40 @@ void LED_Toggle_EverySec(void){
 	uint32_t p2 = asm_test_mrs();
 	printf("%08X\t%08X\n", p1, p2);
 
+	{
+		uint32_t au = ((1<<31) -1);
+		printf("USAT %u = %u\n", au, asm_usat(au));
+
+		pack32 ap32;
+		ap32.u16[0] = UINT16_MAX;
+		ap32.u16[1] = UINT16_MAX/2;
+		pack32 res_ap32 = asm_usat16(ap32);
+		printf("USAT16 %u %u = %u %u\n",
+				ap32.u16[0], ap32.u16[1], res_ap32.u16[0], res_ap32.u16[1]);
+
+		int32_t ai = INT32_MAX;
+		printf("SSAT %i = %i\n", ai, asm_ssat(ai));
+
+		ap32.i16[0] = (int16_t)UINT16_MAX;
+		ap32.i16[1] = INT16_MAX;
+		res_ap32 = asm_ssat16(ap32);
+		printf("SSAT16 %i %i = %i %i\n",
+				ap32.i16[0], ap32.i16[1], res_ap32.i16[0], res_ap32.i16[1]);
+
+		int32_t bi = INT32_MAX;
+		printf("QADD %i+%i = %i\n", ai, bi, asm_qadd(ai, bi));
+
+		bi = INT32_MAX/2;
+		printf("QADD %i+%i = %i\n", ai, bi, asm_qadd(ai, bi));
+
+		ai = INT32_MIN;
+		bi = 1;
+		printf("QSUB %i-%i = %i\n", ai, bi, asm_qsub(ai, bi));
+
+		ai = INT32_MAX;
+		bi = INT32_MIN;
+		printf("QSUB %i-%i = %i\n", ai, bi, asm_qsub(ai, bi));
+	}
 	XMC_SCU_StartTemperatureMeasurement();
 }
 

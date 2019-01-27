@@ -61,9 +61,38 @@
 //• executing a CLREX instruction removes only the local exclusive access tag for the processor
 //• executing a Store-Exclusive instruction, or an exception. removes the local exclusive
 //access tags, and global exclusive access tags for the processor.
-
-
 #include <stdint.h>
+#include <stdbool.h>
+
+typedef union union_pack16
+{
+	uint16_t u16;
+	int16_t i16;
+	uint8_t u8[2];
+	int8_t i8[2];
+}pack16;
+
+typedef union union_pack32
+{
+	uint32_t u32;
+	int32_t i32;
+	uint16_t u16[2];
+	int16_t i16[2];
+	uint8_t u8[4];
+	int8_t i8[4];
+}pack32;
+
+typedef union union_pack64
+{
+	uint64_t u64;
+	int64_t i64;
+	uint32_t u32[2];
+	int32_t i32[2];
+	uint16_t u16[4];
+	int16_t i16[4];
+	uint8_t u8[8];
+	int8_t i8[8];
+}pack64;
 
 extern uint32_t asm_get_8bit_number(void);
 extern uint32_t asm_get_xor(uint32_t in, uint32_t key);
@@ -105,5 +134,13 @@ extern void asm_svc_1(uint32_t in);
 extern void asm_svc_10(uint32_t in);
 extern void asm_test_msr(uint32_t in);
 extern uint32_t asm_test_mrs(void);
+
+extern uint32_t asm_usat(uint32_t in);
+extern pack32 asm_usat16(pack32 in);
+extern int32_t asm_ssat(int32_t in);
+extern pack32 asm_ssat16(pack32 in);
+extern uint32_t asm_usat(uint32_t in);
+extern int32_t asm_qadd(int32_t inA, int32_t inB);
+extern int32_t asm_qsub(int32_t inA, int32_t inB);
 
 #endif /* ASM_PROTOTYPE_H_ */
