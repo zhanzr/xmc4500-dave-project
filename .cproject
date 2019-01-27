@@ -119,7 +119,7 @@
 							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.GNU_ELF" id="com.ifx.xmc4000.targetPlatform.1025562687" isAbstract="false" name="Windows Platform" osList="win32" superClass="com.ifx.xmc4000.targetPlatform"/>
 							<builder buildPath="${workspace_loc:/xmc4500_t1}/Debug" id="com.ifx.XMC4000.toolchainBuilder.673411944" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="XMC Builder" parallelBuildOn="true" parallelizationNumber="optimal" superClass="com.ifx.XMC4000.toolchainBuilder"/>
 							<tool id="com.ifx.xmc4000.appDebug.compiler.1508207451" name="ARM-GCC C Compiler" superClass="com.ifx.xmc4000.appDebug.compiler">
-								<option id="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.optimization.level.341165472" name="Optimization level" superClass="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false" value="org.eclipse.cdt.cross.arm.gnu.base.option.optimization.level.none" valueType="enumerated"/>
+								<option id="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.optimization.level.341165472" name="Optimization level" superClass="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.optimization.level" useByScannerDiscovery="false" value="org.eclipse.cdt.cross.arm.gnu.base.option.optimization.level.debugging" valueType="enumerated"/>
 								<option id="com.ifx.xmc4000.compiler.option.misc.mfloat.1177909220" name="Floating point" superClass="com.ifx.xmc4000.compiler.option.misc.mfloat" useByScannerDiscovery="false" value="org.eclipse.cdt.cross.arm.gnu.base.option.other.mfloat.softfp" valueType="enumerated"/>
 								<option id="com.ifx.xmc4000.compiler.option.include.paths.1028899590" name="Include paths (-I)" superClass="com.ifx.xmc4000.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Libraries/XMCLib/inc}&quot;"/>
@@ -136,7 +136,8 @@
 									<listOptionValue builtIn="false" value="XMC4500_F100x1024"/>
 									<listOptionValue builtIn="false" value="UC_ID=4502"/>
 								</option>
-								<option id="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.misc.fastmath.46522059" name="Fast math (-ffast-math)" superClass="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.misc.fastmath" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.misc.fastmath.46522059" name="Fast math (-ffast-math)" superClass="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.misc.fastmath" useByScannerDiscovery="false" value="false" valueType="boolean"/>
+								<option id="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.misc.std.2029084367" name="Language standard" superClass="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.misc.std" useByScannerDiscovery="false" value="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.misc.std.gnu11" valueType="enumerated"/>
 								<inputType id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.c.compiler.base.input.1786530260" superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.c.compiler.base.input"/>
 							</tool>
 							<tool id="com.ifx.xmc4000.appDebug.cppcompiler.851056352" name="ARM-GCC C++ Compiler" superClass="com.ifx.xmc4000.appDebug.cppcompiler">
@@ -185,8 +186,8 @@
 							<tool id="com.ifx.xmc4000.printsize.1032025052" name="ARM-GCC Print Size" superClass="com.ifx.xmc4000.printsize"/>
 						</toolChain>
 					</folderInfo>
-					<fileInfo id="com.ifx.xmc4000.appDebug.341024911.325260072" name="cortex_m0_test_8.S" rcbsApplicability="disable" resourcePath="asm/cortex_m0_test_8.S" toolsToInvoke="com.ifx.xmc4000.appDebug.assembler.190763372.1135866311">
-						<tool id="com.ifx.xmc4000.appDebug.assembler.190763372.1135866311" name="ARM-GCC Assembler" superClass="com.ifx.xmc4000.appDebug.assembler.190763372"/>
+					<fileInfo id="com.ifx.xmc4000.appDebug.341024911.1364167942" name="SVC_Table.S" rcbsApplicability="disable" resourcePath="asm/SVC_Table.S" toolsToInvoke="com.ifx.xmc4000.appDebug.assembler.190763372.1994501299">
+						<tool id="com.ifx.xmc4000.appDebug.assembler.190763372.1994501299" name="ARM-GCC Assembler" superClass="com.ifx.xmc4000.appDebug.assembler.190763372"/>
 					</fileInfo>
 					<sourceEntries>
 						<entry excluding="Dave/Model" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>

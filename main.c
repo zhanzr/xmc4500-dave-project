@@ -49,6 +49,15 @@ void TestFunct(void){
 	printf("CPUID:%08X\n", SCB->CPUID);
 }
 
+void __SVC_1( uint32_t in ) __attribute__ (( naked ));
+
+void __SVC_1( uint32_t in )
+{
+	printf("%s:%08X\n",
+			__func__,
+			SCB->CPUID);
+}
+
 void LED_Toggle_EverySec(void){
 	DIGITAL_IO_ToggleOutput(&DIGITAL_IO_0);
 	DIGITAL_IO_ToggleOutput(&DIGITAL_IO_1);
@@ -137,9 +146,9 @@ void LED_Toggle_EverySec(void){
 
 	//Part 8: Test SVC, MSR, MRS
 	printf("Part 8\n");
-	printf("ASM Test 29, Before SVC #1\n");
-	//asm_svc_1(1000);
-	printf("After SVC #1\n");
+	printf("ASM Test 29, Before SVC\n");
+//	asm_svc_1(1000);
+	printf("After SVC\n");
 
 	printf("ASM Test 30 Result:%08X\n", asm_test_mrs());
 	printf("ASM Test 31 Tick:%u\n", SysTick->VAL);

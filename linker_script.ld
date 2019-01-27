@@ -112,11 +112,16 @@ SECTIONS
         . = ALIGN(4);        
     } > FLASH_1_cached AT > FLASH_1_uncached
 
+    .svc_table : ALIGN (4)
+    {
+      KEEP (*(.svc_table))
+    } > FLASH_1_cached AT > FLASH_1_uncached
+     
     .eh_frame_hdr : ALIGN (4)
     {
       KEEP (*(.eh_frame_hdr))
-    } > FLASH_1_cached AT > FLASH_1_uncached
-  
+    } > FLASH_1_cached AT > FLASH_1_uncached 
+    
     .eh_frame : ALIGN (4)
     {
       KEEP (*(.eh_frame))

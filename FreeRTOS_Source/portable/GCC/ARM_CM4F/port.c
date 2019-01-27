@@ -242,16 +242,49 @@ volatile uint32_t ulDummy = 0;
 void vPortSVCHandler( void )
 {
 	__asm volatile (
+			"	MRS R3, CONTROL	\n"
+			"	AND R3, #0x00000002	\n"
+			"	CBNZ	R3, READ_PSP	\n"
+			"	MRS     R2,MSP   \n"               /* Read SP(MSP or PSP according to the CONTROL */
+			"	B	READ_PC_FROM_STACK	\n"
+			"READ_PSP:	\n"
+			"	MRS R2, PSP	\n"
+			"READ_PC_FROM_STACK:	\n"
+			"	LDR     R1,[R2,#24]      \n"       /* Read Saved PC from Stack */
+			"	LDRB    R1,[R1,#-2]      \n"       /* Load SVC Number */
+			"	CBNZ    R1,SVC_User	\n"
 					"	ldr	r3, pxCurrentTCBConst2		\n" /* Restore the context. */
 					"	ldr r1, [r3]					\n" /* Use pxCurrentTCBConst to get the pxCurrentTCB address. */
-					"	ldr r0, [r1]					\n" /* The first item in pxCurrentTCB is the task top of stack. */
-					"	ldmia r0!, {r4-r11, r14}		\n" /* Pop the registers that are not automatically saved on exception entry and the critical nesting count. */
-					"	msr psp, r0						\n" /* Restore the task stack pointer. */
+					"	ldr r2, [r1]					\n" /* The first item in pxCurrentTCB is the task top of stack. */
+					"	ldmia r2!, {r4-r11, r14}		\n" /* Pop the registers that are not automatically saved on exception entry and the critical nesting count. */
+					"	msr psp, r2						\n" /* Restore the task stack pointer. */
 					"	isb								\n"
-					"	mov r0, #0 						\n"
-					"	msr	basepri, r0					\n"
+					"	mov r2, #0 						\n"
+					"	msr	basepri, r2					\n"
 					"	bx r14							\n"
 					"									\n"
+			"SVC_User:	\n"
+//			"	BKPT 0	\n"
+//			"BL	__SVC_1\n"
+        "PUSH    {R4,LR}         \n"        /* Save Registers */
+        "LDR     R2,=SVC_Count	\n"
+        "LDR     R2,[R2]	\n"
+        "CMP     R1,R2	\n"
+        "BHI     SVC_Done          \n"      /* Overflow */
+			"									\n"
+        "LDR     R4,=SVC_Table-4\n"
+        "LDR     R4,[R4,R1,LSL #2]      \n" /* Load SVC Function Address */
+			"									\n"
+        "LDM     R0,{R0-R3,R12}        \n"  /* Read R0-R3,R12 from stack */
+        "BLX     R4                    \n"  /* Call SVC Function */
+			"									\n"
+        "MRS     R12,PSP	\n"
+        "STM     R12,{R0-R3}         \n"    /* Function return values */
+"SVC_Done:	\n"
+        "POP     {R4,PC}          \n"       /* RETI */
+			"									\n"
+//        ".fnend	\n"
+			"									\n"
 					"	.align 4						\n"
 					"pxCurrentTCBConst2: .word pxCurrentTCB				\n"
 				);

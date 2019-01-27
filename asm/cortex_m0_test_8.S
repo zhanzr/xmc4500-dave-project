@@ -13,6 +13,7 @@
     .thumb
 
     .global asm_svc_1
+    .global asm_svc_10
     .global asm_test_msr
     .global asm_test_mrs
 
@@ -25,7 +26,12 @@
 
 //Supervisor Call
 asm_svc_1:
-    SVC #1
+//    SVC #1
+    svc 0
+    bx lr
+
+asm_svc_10:
+    SVC #10
     bx lr
 
 //Test special register write
