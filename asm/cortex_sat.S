@@ -66,4 +66,12 @@ asm_qsub:
     qsub result, inputA, inputB
     bx lr
 
+asm_uqadd16:
+    uqadd16 result, inputA, inputB
+    bx lr
+
+asm_uqsub16:
+    uqsub16 result, inputA, inputB
+    bx lr
+
     .end

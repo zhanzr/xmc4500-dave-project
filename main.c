@@ -192,6 +192,9 @@ void LED_Toggle_EverySec(void){
 		bi = INT32_MIN;
 		printf("QSUB %i-%i = %i\n", ai, bi, asm_qsub(ai, bi));
 	}
+
+	__SSAT(ai);
+
 	XMC_SCU_StartTemperatureMeasurement();
 }
 

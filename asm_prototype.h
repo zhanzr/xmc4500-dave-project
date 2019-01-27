@@ -142,5 +142,7 @@ extern pack32 asm_ssat16(pack32 in);
 extern uint32_t asm_usat(uint32_t in);
 extern int32_t asm_qadd(int32_t inA, int32_t inB);
 extern int32_t asm_qsub(int32_t inA, int32_t inB);
+extern pack32 asm_uqadd16(pack32 inA, pack32 inB);
+extern pack32 asm_uqsub16(pack32 inA, pack32 inB);
 
 #endif /* ASM_PROTOTYPE_H_ */
