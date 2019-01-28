@@ -16,6 +16,8 @@
 #include <xmc_scu.h>
 #include <xmc_fce.h>
 
+#include <math.h>
+
 /* Kernel includes. */
 #include "FreeRTOS.h"
 #include "task.h"
@@ -158,81 +160,136 @@ void LED_Toggle_EverySec(void){
 	uint32_t p2 = asm_test_mrs();
 	printf("%08X\t%08X\n", p1, p2);
 
+	//	{
+	//		uint32_t au = ((1<<31) -1);
+	//		printf("USAT %u = %u\n", au, asm_usat(au));
+	//
+	//		pack32 ap32;
+	//		ap32.u16[0] = UINT16_MAX;
+	//		ap32.u16[1] = UINT16_MAX/2;
+	//		pack32 res_ap32 = asm_usat16(ap32);
+	//		printf("USAT16 %u %u = %u %u\n",
+	//				ap32.u16[0], ap32.u16[1], res_ap32.u16[0], res_ap32.u16[1]);
+	//
+	//		int32_t ai = INT32_MAX;
+	//		printf("SSAT %i = %i\n", ai, asm_ssat(ai));
+	//
+	//		ap32.i16[0] = (int16_t)UINT16_MAX;
+	//		ap32.i16[1] = INT16_MAX;
+	//		res_ap32 = asm_ssat16(ap32);
+	//		printf("SSAT16 %i %i = %i %i\n",
+	//				ap32.i16[0], ap32.i16[1], res_ap32.i16[0], res_ap32.i16[1]);
+	//
+	//		int32_t bi = INT32_MAX;
+	//		printf("QADD %i+%i = %i\n", ai, bi, asm_qadd(ai, bi));
+	//
+	//		bi = INT32_MAX/2;
+	//		printf("QADD %i+%i = %i\n", ai, bi, asm_qadd(ai, bi));
+	//
+	//		ai = INT32_MIN;
+	//		bi = 1;
+	//		printf("QSUB %i-%i = %i\n", ai, bi, asm_qsub(ai, bi));
+	//
+	//		ai = INT32_MAX;
+	//		bi = INT32_MIN;
+	//		printf("QSUB %i-%i = %i\n", ai, bi, asm_qsub(ai, bi));
+	//	}
+	//
+	//	{
+	//		uint32_t au = 0;
+	//		uint32_t res = asm_test_tbb(au);
+	//		printf("%u %u\n", au, res);
+	//
+	//		au = 1;
+	//		res = asm_test_tbb(au);
+	//		printf("%u %u\n", au, res);
+	//
+	//		au = 2;
+	//		res = asm_test_tbb(au);
+	//		printf("%u %u\n", au, res);
+	//
+	//		au = 3;
+	//		res = asm_test_tbb(au);
+	//		printf("%u %u\n", au, res);
+	//
+	//		//index exceed the table will incur a usage fault
+	//		//		au = 4;
+	//		//		res = asm_test_tbb(au);
+	//		//		printf("%u %u\n", au, res);
+	//
+	//		au = 0;
+	//		res = asm_test_tbh(au);
+	//		printf("%u %u\n", au, res);
+	//
+	//		au = 1;
+	//		res = asm_test_tbh(au);
+	//		printf("%u %u\n", au, res);
+	//
+	//		au = 2;
+	//		res = asm_test_tbh(au);
+	//		printf("%u %u\n", au, res);
+	//
+	//		//index exceed the table will incur a usage fault
+	////		au = 3;
+	////		res = asm_test_tbh(au);
+	////		printf("%u %u\n", au, res);
+	//	}
 	{
-		uint32_t au = ((1<<31) -1);
-		printf("USAT %u = %u\n", au, asm_usat(au));
+		float fA = -1.1;
+		printf("VABS %f = %f\n", fA, asm_vabs(fA));
 
-		pack32 ap32;
-		ap32.u16[0] = UINT16_MAX;
-		ap32.u16[1] = UINT16_MAX/2;
-		pack32 res_ap32 = asm_usat16(ap32);
-		printf("USAT16 %u %u = %u %u\n",
-				ap32.u16[0], ap32.u16[1], res_ap32.u16[0], res_ap32.u16[1]);
+		float fB = 3.3;
+		printf("VADD %f + %f = %f\n", fA, fB, asm_vadd(fA, fB));
+		fA = M_PI;
+		fB= M_E;
+		printf("VADD %f + %f = %f\n", fA, fB, asm_vadd(fA, fB));
 
-		int32_t ai = INT32_MAX;
-		printf("SSAT %i = %i\n", ai, asm_ssat(ai));
+		fB = fA;
+		printf("VCMP %f , %f = %08X\n", fA, fB, asm_vcmp(fA, fB));
+		fA = M_PI;
+		fB= M_E;
+		printf("VCMP %f , %f = %08X\n", fA, fB, asm_vcmp(fA, fB));
 
-		ap32.i16[0] = (int16_t)UINT16_MAX;
-		ap32.i16[1] = INT16_MAX;
-		res_ap32 = asm_ssat16(ap32);
-		printf("SSAT16 %i %i = %i %i\n",
-				ap32.i16[0], ap32.i16[1], res_ap32.i16[0], res_ap32.i16[1]);
+		fA = -1.1;
+		printf("VCVT S32 %f = %i\n", fA, asm_vcvt_s32(fA));
+		fA = M_PI;
+		printf("VCVT S32 %f = %i\n", fA, asm_vcvt_s32(fA));
 
-		int32_t bi = INT32_MAX;
-		printf("QADD %i+%i = %i\n", ai, bi, asm_qadd(ai, bi));
+		fA = -1.1;
+		printf("VCVT U32 %f = %i\n", fA, asm_vcvt_u32(fA));
+		fA = M_PI;
+		printf("VCVT U32 %f = %i\n", fA, asm_vcvt_u32(fA));
 
-		bi = INT32_MAX/2;
-		printf("QADD %i+%i = %i\n", ai, bi, asm_qadd(ai, bi));
+		fB = 3.3;
+		printf("VDIV %f / %f = %f\n", fA, fB, asm_vdiv(fA, fB));
+		fA = M_PI;
+		fB= M_E;
+		printf("VDIV %f / %f = %f\n", fA, fB, asm_vdiv(fA, fB));
 
-		ai = INT32_MIN;
-		bi = 1;
-		printf("QSUB %i-%i = %i\n", ai, bi, asm_qsub(ai, bi));
+		float fC = M_SQRT2;
+		printf("VFMA %f %f %f = %f\n", fA, fB, fC, asm_vfma(fA, fB, fC));
+		fA = M_PI;
+		fB= M_E;
+		printf("VFMA %f %f %f = %f\n", fA, fB, fC, asm_vfma(fA, fB, fC));
 
-		ai = INT32_MAX;
-		bi = INT32_MIN;
-		printf("QSUB %i-%i = %i\n", ai, bi, asm_qsub(ai, bi));
+		fC = M_SQRT2;
+		printf("VFMS %f %f %f = %f\n", fA, fB, fC, asm_vfms(fA, fB, fC));
+		fA = M_PI;
+		fB= M_E;
+		printf("VFMS %f %f %f = %f\n", fA, fB, fC, asm_vfms(fA, fB, fC));
+
+		fC = M_SQRT2;
+		printf("VLMA %f %f %f = %f\n", fA, fB, fC, asm_vmla(fA, fB, fC));
+		fA = M_PI;
+		fB= M_E;
+		printf("VLMA %f %f %f = %f\n", fA, fB, fC, asm_vmla(fA, fB, fC));
+
+		fC = M_SQRT2;
+		printf("VLMS %f %f %f = %f\n", fA, fB, fC, asm_vmls(fA, fB, fC));
+		fA = M_PI;
+		fB= M_E;
+		printf("VLMS %f %f %f = %f\n", fA, fB, fC, asm_vmls(fA, fB, fC));
 	}
-
-	{
-		uint32_t au = 0;
-		uint32_t res = asm_test_tbb(au);
-		printf("%u %u\n", au, res);
-
-		au = 1;
-		res = asm_test_tbb(au);
-		printf("%u %u\n", au, res);
-
-		au = 2;
-		res = asm_test_tbb(au);
-		printf("%u %u\n", au, res);
-
-		au = 3;
-		res = asm_test_tbb(au);
-		printf("%u %u\n", au, res);
-
-		//index exceed the table will incur a usage fault
-		//		au = 4;
-		//		res = asm_test_tbb(au);
-		//		printf("%u %u\n", au, res);
-
-		au = 0;
-		res = asm_test_tbh(au);
-		printf("%u %u\n", au, res);
-
-		au = 1;
-		res = asm_test_tbh(au);
-		printf("%u %u\n", au, res);
-
-		au = 2;
-		res = asm_test_tbh(au);
-		printf("%u %u\n", au, res);
-
-		//index exceed the table will incur a usage fault
-//		au = 3;
-//		res = asm_test_tbh(au);
-//		printf("%u %u\n", au, res);
-	}
-
 	XMC_SCU_StartTemperatureMeasurement();
 }
 

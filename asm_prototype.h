@@ -94,57 +94,71 @@ typedef union union_pack64
 	int8_t i8[8];
 }pack64;
 
-extern uint32_t asm_get_8bit_number(void);
-extern uint32_t asm_get_xor(uint32_t in, uint32_t key);
-extern void asm_direct_jump_1(void(*fptr)(void));
-extern void asm_direct_jump_2(void(*fptr)(void));
+uint32_t asm_get_8bit_number(void);
+uint32_t asm_get_xor(uint32_t in, uint32_t key);
+void asm_direct_jump_1(void(*fptr)(void));
+void asm_direct_jump_2(void(*fptr)(void));
 
-extern uint32_t asm_add2(uint32_t in);
-extern uint32_t asm_simple_add(uint32_t i1, uint32_t i2);
-extern uint32_t asm_pc_add(void);
+uint32_t asm_add2(uint32_t in);
+uint32_t asm_simple_add(uint32_t i1, uint32_t i2);
+uint32_t asm_pc_add(void);
 
-extern int32_t asm_sub20(int32_t in);
-extern int32_t asm_simple_sub(int32_t i1, int32_t i2);
-extern int32_t asm_get_neg(int32_t in);
+int32_t asm_sub20(int32_t in);
+int32_t asm_simple_sub(int32_t i1, int32_t i2);
+int32_t asm_get_neg(int32_t in);
 
-extern uint32_t asm_simple_mul(uint32_t i1, uint32_t i2);
-extern uint32_t asm_test_cmp(uint32_t i1, uint32_t i2);
-extern uint32_t asm_test_cmn(uint32_t i1, uint32_t i2);
-extern uint32_t asm_get_and(uint32_t in, uint32_t key);
-extern uint32_t asm_get_or(uint32_t in, uint32_t key);
-extern int32_t asm_get_not(int32_t in);
+uint32_t asm_simple_mul(uint32_t i1, uint32_t i2);
+uint32_t asm_test_cmp(uint32_t i1, uint32_t i2);
+uint32_t asm_test_cmn(uint32_t i1, uint32_t i2);
+uint32_t asm_get_and(uint32_t in, uint32_t key);
+uint32_t asm_get_or(uint32_t in, uint32_t key);
+int32_t asm_get_not(int32_t in);
 
-extern uint32_t asm_logic_left(uint32_t in, uint32_t key);
-extern uint32_t asm_logic_right(uint32_t in, uint32_t key);
-extern int32_t asm_arithm_right(int32_t in, uint32_t key);
-extern uint32_t asm_rotate_right(uint32_t in, uint32_t key);
+uint32_t asm_logic_left(uint32_t in, uint32_t key);
+uint32_t asm_logic_right(uint32_t in, uint32_t key);
+int32_t asm_arithm_right(int32_t in, uint32_t key);
+uint32_t asm_rotate_right(uint32_t in, uint32_t key);
 
-extern uint32_t asm_ldr32(uint32_t* addr);
-extern uint32_t asm_str32(uint32_t* addr, uint32_t v);
-extern uint32_t asm_test_push_pop(uint32_t i1, uint32_t i2);
+uint32_t asm_ldr32(uint32_t* addr);
+uint32_t asm_str32(uint32_t* addr, uint32_t v);
+uint32_t asm_test_push_pop(uint32_t i1, uint32_t i2);
 
-extern int32_t asm_s16ext(int16_t in);
-extern int32_t asm_s8ext(int8_t in);
-extern int32_t asm_u16ext(uint16_t in);
-extern uint32_t asm_rev(uint32_t in);
-extern uint32_t asm_rev16(uint32_t in);
-extern uint32_t asm_revsh(uint32_t in);
+int32_t asm_s16ext(int16_t in);
+int32_t asm_s8ext(int8_t in);
+int32_t asm_u16ext(uint16_t in);
+uint32_t asm_rev(uint32_t in);
+uint32_t asm_rev16(uint32_t in);
+uint32_t asm_revsh(uint32_t in);
 
-extern void asm_svc_1(uint32_t in);
-extern void asm_svc_10(uint32_t in);
-extern void asm_test_msr(uint32_t in);
-extern uint32_t asm_test_mrs(void);
+void asm_svc_1(uint32_t in);
+void asm_svc_10(uint32_t in);
+void asm_test_msr(uint32_t in);
+uint32_t asm_test_mrs(void);
 
-extern uint32_t asm_usat(uint32_t in);
-extern pack32 asm_usat16(pack32 in);
-extern int32_t asm_ssat(int32_t in);
-extern pack32 asm_ssat16(pack32 in);
-extern uint32_t asm_usat(uint32_t in);
-extern int32_t asm_qadd(int32_t inA, int32_t inB);
-extern int32_t asm_qsub(int32_t inA, int32_t inB);
-extern pack32 asm_uqadd16(pack32 inA, pack32 inB);
-extern pack32 asm_uqsub16(pack32 inA, pack32 inB);
+uint32_t asm_usat(uint32_t in);
+pack32 asm_usat16(pack32 in);
+int32_t asm_ssat(int32_t in);
+pack32 asm_ssat16(pack32 in);
+uint32_t asm_usat(uint32_t in);
+int32_t asm_qadd(int32_t inA, int32_t inB);
+int32_t asm_qsub(int32_t inA, int32_t inB);
+pack32 asm_uqadd16(pack32 inA, pack32 inB);
+pack32 asm_uqsub16(pack32 inA, pack32 inB);
 
-extern uint32_t asm_test_tbb(uint32_t inA);
+uint32_t asm_test_tbb(uint8_t inA);
+uint32_t asm_test_tbh(uint16_t inA);
+
+float asm_vabs(float inFA);
+float asm_vadd(float inFA, float inFB);
+uint32_t asm_vcmp(float inFA, float inFB);
+
+int32_t asm_vcvt_s32(float inFA);
+uint32_t asm_vcvt_u32(float inFA);
+float asm_vdiv(float inFA, float inFB);
+
+float asm_vfma(float inFA, float inFB, float inFC);
+float asm_vfms(float inFA, float inFB, float inFC);
+float asm_vmla(float inFA, float inFB, float inFC);
+float asm_vmls(float inFA, float inFB, float inFC);
 
 #endif /* ASM_PROTOTYPE_H_ */

@@ -153,7 +153,7 @@
 								</option>
 							</tool>
 							<tool id="com.ifx.xmc4000.appDebug.assembler.190763372" name="ARM-GCC Assembler" superClass="com.ifx.xmc4000.appDebug.assembler">
-								<option id="com.ifx.xmc4000.assembler.option.misc.mfloat.1551971770" name="Floating point" superClass="com.ifx.xmc4000.assembler.option.misc.mfloat" value="org.eclipse.cdt.cross.arm.gnu.base.option.other.mfloat.softfp" valueType="enumerated"/>
+								<option id="com.ifx.xmc4000.assembler.option.misc.mfloat.1551971770" name="Floating point" superClass="com.ifx.xmc4000.assembler.option.misc.mfloat" useByScannerDiscovery="false" value="org.eclipse.cdt.cross.arm.gnu.base.option.other.mfloat.softfp" valueType="enumerated"/>
 								<option id="com.ifx.xmc4000.assembler.option.include.paths.957967246" name="Include paths (-I)" superClass="com.ifx.xmc4000.assembler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Libraries/XMCLib/inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}}&quot;"/>
@@ -186,11 +186,8 @@
 							<tool id="com.ifx.xmc4000.printsize.1032025052" name="ARM-GCC Print Size" superClass="com.ifx.xmc4000.printsize"/>
 						</toolChain>
 					</folderInfo>
-					<fileInfo id="com.ifx.xmc4000.appDebug.341024911.1364167942" name="SVC_Table.S" rcbsApplicability="disable" resourcePath="asm/SVC_Table.S" toolsToInvoke="com.ifx.xmc4000.appDebug.assembler.190763372.1994501299">
-						<tool id="com.ifx.xmc4000.appDebug.assembler.190763372.1994501299" name="ARM-GCC Assembler" superClass="com.ifx.xmc4000.appDebug.assembler.190763372"/>
-					</fileInfo>
 					<sourceEntries>
-						<entry excluding="Dave/Model" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="asm/cortex_m4_float2.S|Dave/Model" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -229,4 +226,5 @@
 		</configuration>
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
+	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 </cproject>
