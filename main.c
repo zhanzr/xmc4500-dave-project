@@ -53,8 +53,7 @@ void TestFunct(void){
 
 void __SVC_1( uint32_t in ) __attribute__ (( naked ));
 
-void __SVC_1( uint32_t in )
-{
+void __SVC_1( uint32_t in ){
 	printf("%s:%08X\n",
 			__func__,
 			SCB->CPUID);
@@ -244,6 +243,12 @@ void LED_Toggle_EverySec(void){
 		fB= M_E;
 		printf("VADD %f + %f = %f\n", fA, fB, asm_vadd(fA, fB));
 
+		fB = 3.3;
+		printf("VSUB %f - %f = %f\n", fA, fB, asm_vsub(fA, fB));
+		fA = M_PI;
+		fB= M_E;
+		printf("VSUB %f - %f = %f\n", fA, fB, asm_vsub(fA, fB));
+
 		fB = fA;
 		printf("VCMP %f , %f = %08X\n", fA, fB, asm_vcmp(fA, fB));
 		fA = M_PI;
@@ -259,6 +264,17 @@ void LED_Toggle_EverySec(void){
 		printf("VCVT U32 %f = %i\n", fA, asm_vcvt_u32(fA));
 		fA = M_PI;
 		printf("VCVT U32 %f = %i\n", fA, asm_vcvt_u32(fA));
+
+		fA = -1.1;
+		printf("VSQRT %f = %f\n", fA, asm_vsqrt(fA));
+		fA = 2;
+		printf("VSQRT %f = %f\n", fA, asm_vsqrt(fA));
+
+		fB = 3.3;
+		printf("VMUL %f * %f = %f\n", fA, fB, asm_vmul(fA, fB));
+		fA = M_PI;
+		fB= M_E;
+		printf("VMUL %f * %f = %f\n", fA, fB, asm_vmul(fA, fB));
 
 		fB = 3.3;
 		printf("VDIV %f / %f = %f\n", fA, fB, asm_vdiv(fA, fB));

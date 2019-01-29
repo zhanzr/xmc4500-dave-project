@@ -149,11 +149,14 @@ uint32_t asm_test_tbb(uint8_t inA);
 uint32_t asm_test_tbh(uint16_t inA);
 
 float asm_vabs(float inFA);
+float asm_vsqrt(float inFA);
 float asm_vadd(float inFA, float inFB);
+float asm_vsub(float inFA, float inFB);
 uint32_t asm_vcmp(float inFA, float inFB);
 
 int32_t asm_vcvt_s32(float inFA);
 uint32_t asm_vcvt_u32(float inFA);
+float asm_vmul(float inFA, float inFB);
 float asm_vdiv(float inFA, float inFB);
 
 float asm_vfma(float inFA, float inFB, float inFC);
