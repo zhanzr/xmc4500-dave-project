@@ -148,6 +148,9 @@ pack32 asm_uqsub16(pack32 inA, pack32 inB);
 uint32_t asm_test_tbb(uint8_t inA);
 uint32_t asm_test_tbh(uint16_t inA);
 
+uint32_t asm_simple_udiv(uint32_t i1, uint32_t i2);
+int32_t asm_simple_sdiv(int32_t i1, int32_t i2);
+
 float asm_vabs(float inFA);
 float asm_vsqrt(float inFA);
 float asm_vadd(float inFA, float inFB);

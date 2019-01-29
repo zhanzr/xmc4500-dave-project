@@ -233,78 +233,106 @@ void LED_Toggle_EverySec(void){
 	////		res = asm_test_tbh(au);
 	////		printf("%u %u\n", au, res);
 	//	}
+	//	{
+	//		float fA = -1.1;
+	//		printf("VABS %f = %f\n", fA, asm_vabs(fA));
+	//
+	//		float fB = 3.3;
+	//		printf("VADD %f + %f = %f\n", fA, fB, asm_vadd(fA, fB));
+	//		fA = M_PI;
+	//		fB= M_E;
+	//		printf("VADD %f + %f = %f\n", fA, fB, asm_vadd(fA, fB));
+	//
+	//		fB = 3.3;
+	//		printf("VSUB %f - %f = %f\n", fA, fB, asm_vsub(fA, fB));
+	//		fA = M_PI;
+	//		fB= M_E;
+	//		printf("VSUB %f - %f = %f\n", fA, fB, asm_vsub(fA, fB));
+	//
+	//		fB = fA;
+	//		printf("VCMP %f , %f = %08X\n", fA, fB, asm_vcmp(fA, fB));
+	//		fA = M_PI;
+	//		fB= M_E;
+	//		printf("VCMP %f , %f = %08X\n", fA, fB, asm_vcmp(fA, fB));
+	//
+	//		fA = -1.1;
+	//		printf("VCVT S32 %f = %i\n", fA, asm_vcvt_s32(fA));
+	//		fA = M_PI;
+	//		printf("VCVT S32 %f = %i\n", fA, asm_vcvt_s32(fA));
+	//
+	//		fA = -1.1;
+	//		printf("VCVT U32 %f = %i\n", fA, asm_vcvt_u32(fA));
+	//		fA = M_PI;
+	//		printf("VCVT U32 %f = %i\n", fA, asm_vcvt_u32(fA));
+	//
+	//		fA = -1.1;
+	//		printf("VSQRT %f = %f\n", fA, asm_vsqrt(fA));
+	//		fA = 2;
+	//		printf("VSQRT %f = %f\n", fA, asm_vsqrt(fA));
+	//
+	//		fB = 3.3;
+	//		printf("VMUL %f * %f = %f\n", fA, fB, asm_vmul(fA, fB));
+	//		fA = M_PI;
+	//		fB= M_E;
+	//		printf("VMUL %f * %f = %f\n", fA, fB, asm_vmul(fA, fB));
+	//
+	//		fB = 3.3;
+	//		printf("VDIV %f / %f = %f\n", fA, fB, asm_vdiv(fA, fB));
+	//		fA = M_PI;
+	//		fB= M_E;
+	//		printf("VDIV %f / %f = %f\n", fA, fB, asm_vdiv(fA, fB));
+	//
+	//		float fC = M_SQRT2;
+	//		printf("VFMA %f %f %f = %f\n", fA, fB, fC, asm_vfma(fA, fB, fC));
+	//		fA = M_PI;
+	//		fB= M_E;
+	//		printf("VFMA %f %f %f = %f\n", fA, fB, fC, asm_vfma(fA, fB, fC));
+	//
+	//		fC = M_SQRT2;
+	//		printf("VFMS %f %f %f = %f\n", fA, fB, fC, asm_vfms(fA, fB, fC));
+	//		fA = M_PI;
+	//		fB= M_E;
+	//		printf("VFMS %f %f %f = %f\n", fA, fB, fC, asm_vfms(fA, fB, fC));
+	//
+	//		fC = M_SQRT2;
+	//		printf("VLMA %f %f %f = %f\n", fA, fB, fC, asm_vmla(fA, fB, fC));
+	//		fA = M_PI;
+	//		fB= M_E;
+	//		printf("VLMA %f %f %f = %f\n", fA, fB, fC, asm_vmla(fA, fB, fC));
+	//
+	//		fC = M_SQRT2;
+	//		printf("VLMS %f %f %f = %f\n", fA, fB, fC, asm_vmls(fA, fB, fC));
+	//		fA = M_PI;
+	//		fB= M_E;
+	//		printf("VLMS %f %f %f = %f\n", fA, fB, fC, asm_vmls(fA, fB, fC));
+	//	}
 	{
-		float fA = -1.1;
-		printf("VABS %f = %f\n", fA, asm_vabs(fA));
+		printf("SCB->CCR=%08X\n", SCB->CCR);
+		/* Disable divide by zero trap */
+		SCB->CCR &= ~SCB_CCR_DIV_0_TRP_Msk;
+		printf("SCB->CCR=%08X\n", SCB->CCR);
 
-		float fB = 3.3;
-		printf("VADD %f + %f = %f\n", fA, fB, asm_vadd(fA, fB));
-		fA = M_PI;
-		fB= M_E;
-		printf("VADD %f + %f = %f\n", fA, fB, asm_vadd(fA, fB));
-
-		fB = 3.3;
-		printf("VSUB %f - %f = %f\n", fA, fB, asm_vsub(fA, fB));
-		fA = M_PI;
-		fB= M_E;
-		printf("VSUB %f - %f = %f\n", fA, fB, asm_vsub(fA, fB));
-
-		fB = fA;
-		printf("VCMP %f , %f = %08X\n", fA, fB, asm_vcmp(fA, fB));
-		fA = M_PI;
-		fB= M_E;
-		printf("VCMP %f , %f = %08X\n", fA, fB, asm_vcmp(fA, fB));
-
-		fA = -1.1;
-		printf("VCVT S32 %f = %i\n", fA, asm_vcvt_s32(fA));
-		fA = M_PI;
-		printf("VCVT S32 %f = %i\n", fA, asm_vcvt_s32(fA));
-
-		fA = -1.1;
-		printf("VCVT U32 %f = %i\n", fA, asm_vcvt_u32(fA));
-		fA = M_PI;
-		printf("VCVT U32 %f = %i\n", fA, asm_vcvt_u32(fA));
-
-		fA = -1.1;
-		printf("VSQRT %f = %f\n", fA, asm_vsqrt(fA));
-		fA = 2;
-		printf("VSQRT %f = %f\n", fA, asm_vsqrt(fA));
-
-		fB = 3.3;
-		printf("VMUL %f * %f = %f\n", fA, fB, asm_vmul(fA, fB));
-		fA = M_PI;
-		fB= M_E;
-		printf("VMUL %f * %f = %f\n", fA, fB, asm_vmul(fA, fB));
-
-		fB = 3.3;
-		printf("VDIV %f / %f = %f\n", fA, fB, asm_vdiv(fA, fB));
-		fA = M_PI;
-		fB= M_E;
+		float fA = M_PI;
+		float fB = 0;
 		printf("VDIV %f / %f = %f\n", fA, fB, asm_vdiv(fA, fB));
 
-		float fC = M_SQRT2;
-		printf("VFMA %f %f %f = %f\n", fA, fB, fC, asm_vfma(fA, fB, fC));
-		fA = M_PI;
-		fB= M_E;
-		printf("VFMA %f %f %f = %f\n", fA, fB, fC, asm_vfma(fA, fB, fC));
+		uint32_t uA = 1;
+		uint32_t uB = 0;
+		printf("UDIV %u / %u = %u\n", uA, uB, asm_simple_udiv(uA, uB));
 
-		fC = M_SQRT2;
-		printf("VFMS %f %f %f = %f\n", fA, fB, fC, asm_vfms(fA, fB, fC));
-		fA = M_PI;
-		fB= M_E;
-		printf("VFMS %f %f %f = %f\n", fA, fB, fC, asm_vfms(fA, fB, fC));
+		int32_t iA = 1;
+		int32_t iB = 0;
+		printf("SDIV %i / %i = %i\n", iA, iB, asm_simple_sdiv(iA, iB));
 
-		fC = M_SQRT2;
-		printf("VLMA %f %f %f = %f\n", fA, fB, fC, asm_vmla(fA, fB, fC));
-		fA = M_PI;
-		fB= M_E;
-		printf("VLMA %f %f %f = %f\n", fA, fB, fC, asm_vmla(fA, fB, fC));
+		printf("%i / %i = %i\n", 10, 0, 10/0);
 
-		fC = M_SQRT2;
-		printf("VLMS %f %f %f = %f\n", fA, fB, fC, asm_vmls(fA, fB, fC));
-		fA = M_PI;
-		fB= M_E;
-		printf("VLMS %f %f %f = %f\n", fA, fB, fC, asm_vmls(fA, fB, fC));
+		printf("SCB->CCR=%08X\n", SCB->CCR);
+		/* Enable divide by zero trap */
+		SCB->CCR |= SCB_CCR_DIV_0_TRP_Msk;
+		printf("SCB->CCR=%08X\n", SCB->CCR);
+
+		//Trap Div by Zero as Usage Fault
+		printf("UDIV %u / %u = %u\n", uA, uB, asm_simple_udiv(uA, uB));
 	}
 	XMC_SCU_StartTemperatureMeasurement();
 }
