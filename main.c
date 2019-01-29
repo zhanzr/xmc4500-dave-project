@@ -309,12 +309,9 @@ void LED_Toggle_EverySec(void){
 	XMC_SCU_StartTemperatureMeasurement();
 }
 
-static void error(void)
-{
-	while(1)
-	{
-		;
-	}
+static void error(void){
+	while(1){
+		;}
 }
 
 void test_whets(void);
