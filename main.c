@@ -59,6 +59,22 @@ void __SVC_1( uint32_t in ){
 			SCB->CPUID);
 }
 
+uint32_t __attribute__((section(".data"))) g_var1 = 1;
+uint32_t __attribute__((section(".bss"))) g_var2 = 2;
+uint32_t __attribute__((section(".no_init"))) g_var3 = 3;
+
+uint32_t __attribute__((section("PSRAM_DATA"))) g_var4 = 4;
+uint32_t __attribute__((section("DSRAM2_DATA"))) g_var5 = 5;
+
+void print_global_var_test(void){
+	printf(" %p-%u \n %p-%u \n %p-%u \n %p-%u \n %p-%u\n",
+			&g_var1, g_var1,
+			&g_var2, g_var2,
+			&g_var3, g_var3,
+			&g_var4, g_var4,
+			&g_var5, g_var5);
+}
+
 void LED_Toggle_EverySec(void){
 	DIGITAL_IO_ToggleOutput(&DIGITAL_IO_0);
 	DIGITAL_IO_ToggleOutput(&DIGITAL_IO_1);
@@ -306,34 +322,37 @@ void LED_Toggle_EverySec(void){
 	//		fB= M_E;
 	//		printf("VLMS %f %f %f = %f\n", fA, fB, fC, asm_vmls(fA, fB, fC));
 	//	}
-	{
-		printf("SCB->CCR=%08X\n", SCB->CCR);
-		/* Disable divide by zero trap */
-		SCB->CCR &= ~SCB_CCR_DIV_0_TRP_Msk;
-		printf("SCB->CCR=%08X\n", SCB->CCR);
+	//	{
+	//		printf("SCB->CCR=%08X\n", SCB->CCR);
+	//		/* Disable divide by zero trap */
+	//		SCB->CCR &= ~SCB_CCR_DIV_0_TRP_Msk;
+	//		printf("SCB->CCR=%08X\n", SCB->CCR);
+	//
+	//		float fA = M_PI;
+	//		float fB = 0;
+	//		printf("VDIV %f / %f = %f\n", fA, fB, asm_vdiv(fA, fB));
+	//
+	//		uint32_t uA = 1;
+	//		uint32_t uB = 0;
+	//		printf("UDIV %u / %u = %u\n", uA, uB, asm_simple_udiv(uA, uB));
+	//
+	//		int32_t iA = 1;
+	//		int32_t iB = 0;
+	//		printf("SDIV %i / %i = %i\n", iA, iB, asm_simple_sdiv(iA, iB));
+	//
+	//		printf("SCB->CCR=%08X\n", SCB->CCR);
+	//		/* Enable divide by zero trap */
+	//		SCB->CCR |= SCB_CCR_DIV_0_TRP_Msk;
+	//		printf("SCB->CCR=%08X\n", SCB->CCR);
+	//
+	//		//Trap Div by Zero as Usage Fault
+	////		printf("UDIV %u / %u = %u\n", uA, uB, asm_simple_udiv(uA, uB));
+	////		printf("SDIV %i / %i = %i\n", iA, iB, asm_simple_sdiv(iA, iB));
+	//		printf("VDIV %f / %f = %f\n", fA, fB, asm_vdiv(fA, fB));
+	//	}
 
-		float fA = M_PI;
-		float fB = 0;
-		printf("VDIV %f / %f = %f\n", fA, fB, asm_vdiv(fA, fB));
+	print_global_var_test();
 
-		uint32_t uA = 1;
-		uint32_t uB = 0;
-		printf("UDIV %u / %u = %u\n", uA, uB, asm_simple_udiv(uA, uB));
-
-		int32_t iA = 1;
-		int32_t iB = 0;
-		printf("SDIV %i / %i = %i\n", iA, iB, asm_simple_sdiv(iA, iB));
-
-		printf("SCB->CCR=%08X\n", SCB->CCR);
-		/* Enable divide by zero trap */
-		SCB->CCR |= SCB_CCR_DIV_0_TRP_Msk;
-		printf("SCB->CCR=%08X\n", SCB->CCR);
-
-		//Trap Div by Zero as Usage Fault
-//		printf("UDIV %u / %u = %u\n", uA, uB, asm_simple_udiv(uA, uB));
-//		printf("SDIV %i / %i = %i\n", iA, iB, asm_simple_sdiv(iA, iB));
-		printf("VDIV %f / %f = %f\n", fA, fB, asm_vdiv(fA, fB));
-	}
 	XMC_SCU_StartTemperatureMeasurement();
 }
 
@@ -352,7 +371,7 @@ void __attribute__((section(".ram_code"))) test_div_psram(void){
 
 	for(uint32_t i=0; i<TEST_LOOP_N; ++i){
 		{
-		//Test unsigned integer division
+			//Test unsigned integer division
 			volatile uint32_t au = 101;
 			volatile uint32_t bu = 10;
 			volatile uint32_t cu = au/bu;
@@ -391,7 +410,7 @@ void test_div_flash(void){
 
 	for(uint32_t i=0; i<TEST_LOOP_N; ++i){
 		{
-		//Test unsigned integer division
+			//Test unsigned integer division
 			volatile uint32_t au = 101;
 			volatile uint32_t bu = 10;
 			volatile uint32_t cu = au/bu;
