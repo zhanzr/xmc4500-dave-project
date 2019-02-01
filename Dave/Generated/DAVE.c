@@ -87,6 +87,11 @@ DAVE_STATUS_t DAVE_Init(void)
   {
 	 /**  Initialization of FCE_CONFIG APP instance FCE_CONFIG_0 */
 	 init_status = (DAVE_STATUS_t)FCE_CONFIG_Init(&FCE_CONFIG_0); 
+   } 
+  if (init_status == DAVE_STATUS_SUCCESS)
+  {
+	 /**  Initialization of WATCHDOG APP instance WATCHDOG_0 */
+	 init_status = (DAVE_STATUS_t)WATCHDOG_Init(&WATCHDOG_0); 
    }  
   return init_status;
 } /**  End of function DAVE_Init */

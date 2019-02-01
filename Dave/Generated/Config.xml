@@ -22,16 +22,6 @@
                 <Type>C File</Type>
             </Source_File>
             <Source_File>
-                <File_Name>cpu_ctrl_xmc4.c</File_Name>
-                <Path>\Dave\Generated\CPU_CTRL_XMC4\cpu_ctrl_xmc4.c</Path>
-                <Type>C File</Type>
-            </Source_File>
-            <Source_File>
-                <File_Name>cpu_ctrl_xmc4_conf.c</File_Name>
-                <Path>\Dave\Generated\CPU_CTRL_XMC4\cpu_ctrl_xmc4_conf.c</Path>
-                <Type>C File</Type>
-            </Source_File>
-            <Source_File>
                 <File_Name>DAVE.c</File_Name>
                 <Path>\Dave\Generated\DAVE.c</Path>
                 <Type>C File</Type>
@@ -66,6 +56,16 @@
                 <Path>\Dave\Generated\GLOBAL_ADC\global_adc_conf.c</Path>
                 <Type>C File</Type>
             </Source_File>
+            <Source_File>
+                <File_Name>watchdog.c</File_Name>
+                <Path>\Dave\Generated\WATCHDOG\watchdog.c</Path>
+                <Type>C File</Type>
+            </Source_File>
+            <Source_File>
+                <File_Name>watchdog_conf.c</File_Name>
+                <Path>\Dave\Generated\WATCHDOG\watchdog_conf.c</Path>
+                <Type>C File</Type>
+            </Source_File>
         </Source_Files>
         <Header_Files>
             <Header_File>
@@ -81,21 +81,6 @@
             <Header_File>
                 <File_Name>clock_xmc4_extern.h</File_Name>
                 <Path>\Dave\Generated\CLOCK_XMC4\clock_xmc4_extern.h</Path>
-                <Type>H File</Type>
-            </Header_File>
-            <Header_File>
-                <File_Name>cpu_ctrl_xmc4.h</File_Name>
-                <Path>\Dave\Generated\CPU_CTRL_XMC4\cpu_ctrl_xmc4.h</Path>
-                <Type>H File</Type>
-            </Header_File>
-            <Header_File>
-                <File_Name>cpu_ctrl_xmc4_conf.h</File_Name>
-                <Path>\Dave\Generated\CPU_CTRL_XMC4\cpu_ctrl_xmc4_conf.h</Path>
-                <Type>H File</Type>
-            </Header_File>
-            <Header_File>
-                <File_Name>cpu_ctrl_xmc4_extern.h</File_Name>
-                <Path>\Dave\Generated\CPU_CTRL_XMC4\cpu_ctrl_xmc4_extern.h</Path>
                 <Type>H File</Type>
             </Header_File>
             <Header_File>
@@ -151,6 +136,21 @@
             <Header_File>
                 <File_Name>global_adc_extern.h</File_Name>
                 <Path>\Dave\Generated\GLOBAL_ADC\global_adc_extern.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>watchdog.h</File_Name>
+                <Path>\Dave\Generated\WATCHDOG\watchdog.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>watchdog_conf.h</File_Name>
+                <Path>\Dave\Generated\WATCHDOG\watchdog_conf.h</Path>
+                <Type>H File</Type>
+            </Header_File>
+            <Header_File>
+                <File_Name>watchdog_extern.h</File_Name>
+                <Path>\Dave\Generated\WATCHDOG\watchdog_extern.h</Path>
                 <Type>H File</Type>
             </Header_File>
         </Header_Files>

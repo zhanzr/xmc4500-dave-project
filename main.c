@@ -75,7 +75,22 @@ void print_global_var_test(void){
 			&g_var5, g_var5);
 }
 
-void LED_Toggle_EverySec(void){
+void test_rom_func(void){
+//	printf("%08X %08X %08X\n",
+//			SCB->VTOR,
+//			SCU_GENERAL->IDCHIP,
+//			SCU_GENERAL->IDMANUF);
+
+//	for(uint32_t i=1; i<32; ++i){
+//		printf("%08X ", *(uint32_t*)(i*sizeof(uint32_t)));
+//	}
+
+	printf("%u\n",  xTaskGetTickCount());
+	printf("\nWDT Cnt:%u\n", XMC_WDT_GetCounter());
+	XMC_WDT_Service();
+}
+
+void configTOGGLE_LED(void){
 	DIGITAL_IO_ToggleOutput(&DIGITAL_IO_0);
 	DIGITAL_IO_ToggleOutput(&DIGITAL_IO_1);
 	//	printf("%u Hz, %08X\n", SystemCoreClock, SCB->CPUID);
@@ -89,91 +104,91 @@ void LED_Toggle_EverySec(void){
 	float tmpV33 = XMC_SCU_POWER_GetEVR33Voltage();
 	printf("%f %f\n", tmpV13, tmpV33);
 
-	printf("ASM Test 1 Result:%u\n", asm_get_8bit_number());
-	printf("ASM Test 2 Result:%08X\t[%08X]\n", asm_get_xor(0x12345678, 0x34567890), 0x12345678^0x34567890);
-	printf("ASM Test 3 Direct Jump:%08X\n", TestFunct);
-	printf("Jump 1, Before.%08X\n", __get_MSP());
-	asm_direct_jump_1(TestFunct);
-	printf("Jump 1, After.%08X\n\n", __get_MSP());
-
-	printf("Jump 2, Before.%08X\n", __get_MSP());
-	asm_direct_jump_2(TestFunct);
-	printf("Jump 2, After.%08X\n\n", __get_MSP());
-
-
-	printf("ASM Test 4 :%u\t[%u]\n", asm_add2(34), 34+2);
-	printf("ASM Test 5 :%u\t[%u]\n", asm_simple_add(123, 456), 123+456);
-	printf("ASM Test 6 :%u\t[%u]\n", asm_pc_add(), 7);
-
-	printf("ASM Test 7 :%d\t[%d]\n", asm_sub20(34), 34-20);
-	printf("ASM Test 8 :%d\t[%d]\n", asm_simple_sub(123, 456), 123-456);
-	printf("ASM Test 9 :%d\t[%d]\n", asm_get_neg(1024), 0-1024);
-
-	printf("ASM Test 10 Result:%u\t[%u]\n", asm_simple_mul(123, 456), 123*456);
-
-	//Test Addition/Mulitiplication Cycles
-#define	TEST_ADD_MUL_NUM	500000
-	//If the multiplication takes similar cycles, it is a single cycle multiplication implementation
-	uint32_t tmpTick = xTaskGetTickCount();
-	for(uint32_t i=0; i<TEST_ADD_MUL_NUM; ++i)
-	{
-		uint32_t tn = 101;
-		asm_simple_add(tn, 456);
-	}
-	tmpTick = xTaskGetTickCount()-tmpTick;
-	printf("A:%u\n", tmpTick);
-
-	tmpTick = xTaskGetTickCount();
-	for(uint32_t i=0; i<TEST_ADD_MUL_NUM; ++i)
-	{
-		uint32_t tn = 101;
-		asm_simple_mul(tn, 456);
-	}
-	tmpTick = xTaskGetTickCount()-tmpTick;
-	printf("M:%u\n", tmpTick);
-
-	//Test Division
-	{
-		uint32_t ta = 10;
-		uint32_t tb = 2;
-		uint32_t tc = ta/tb;
-		printf("%u %u %u\n", ta, tb, tc);
-	}
-
-	printf("ASM Test 11 Result:%u\t[%u]\n", asm_test_cmp(123, 456), (123==456));
-	printf("ASM Test 12 Result:%u\t[%u]\n", asm_test_cmn(123, 456), (123!=456));
-	printf("ASM Test 13 Result:%08X\t[%08X]\n", asm_get_and(0x12345678, 0x34567890), 0x12345678 & 0x34567890);
-	printf("ASM Test 14 Result:%08X\t[%08X]\n", asm_get_or(0x12345678, 0x34567890), (0x12345678 | 0x34567890));
-	printf("ASM Test 15 Result:%08X\t[%08X]\n", asm_get_not(0x12345678), 0-0x12345678);
-
-	uint32_t g_TestVar32 = 0x12345678;
-	printf("ASM Test 20 Result:%08X\t[%08X]\n", asm_ldr32(&g_TestVar32), g_TestVar32);
-	asm_str32(&g_TestVar32, 0x78904563);
-	printf("ASM Test 21 Result:%08X\t[%08X]\n", asm_ldr32(&g_TestVar32), g_TestVar32);
-	printf("ASM Test 22 Result:%u\t[%d]\n", asm_test_push_pop(123, 456), 123+456+456+4);
-
-	//Part 7: Test Extend, Reverse
-	printf("Part 7\n");
-	printf("ASM Test 23 Result:%08X\t[%08X]\n", asm_s16ext((int16_t)0x8001), (int32_t)0x8001);
-	printf("ASM Test 24 Result:%08X\t[%08X]\n", asm_s8ext((int8_t)0xC4), (int32_t)0xC4);
-	printf("ASM Test 25 Result:%08X\t[%08X]\n", asm_u16ext((uint16_t)0x8001), (uint32_t)0x8001);
-	printf("ASM Test 26 Result:%08X\t[%08X]\n", asm_rev(0x123456C8), __REV(0x123456C8));
-	printf("ASM Test 27 Result:%08X\t[%08X]\n", asm_rev16(0x123456C8), __REV16(0x123456C8));
-	printf("ASM Test 28 Result:%08X\t[%08X]\n", asm_revsh(0x123456C8), __REVSH(0x123456C8));
-
-	//Part 8: Test SVC, MSR, MRS
-	printf("Part 8\n");
-	printf("ASM Test 29, Before SVC\n");
-	//	asm_svc_1(1000);
-	printf("After SVC\n");
-
-	printf("ASM Test 30 Result:%08X\n", asm_test_mrs());
-	printf("ASM Test 31 Tick:%u\n", SysTick->VAL);
-	asm_test_msr(0x00000001);
-	uint32_t p1 = asm_test_mrs();
-	asm_test_msr(0x00000000);
-	uint32_t p2 = asm_test_mrs();
-	printf("%08X\t%08X\n", p1, p2);
+//	printf("ASM Test 1 Result:%u\n", asm_get_8bit_number());
+//	printf("ASM Test 2 Result:%08X\t[%08X]\n", asm_get_xor(0x12345678, 0x34567890), 0x12345678^0x34567890);
+//	printf("ASM Test 3 Direct Jump:%08X\n", TestFunct);
+//	printf("Jump 1, Before.%08X\n", __get_MSP());
+//	asm_direct_jump_1(TestFunct);
+//	printf("Jump 1, After.%08X\n\n", __get_MSP());
+//
+//	printf("Jump 2, Before.%08X\n", __get_MSP());
+//	asm_direct_jump_2(TestFunct);
+//	printf("Jump 2, After.%08X\n\n", __get_MSP());
+//
+//
+//	printf("ASM Test 4 :%u\t[%u]\n", asm_add2(34), 34+2);
+//	printf("ASM Test 5 :%u\t[%u]\n", asm_simple_add(123, 456), 123+456);
+//	printf("ASM Test 6 :%u\t[%u]\n", asm_pc_add(), 7);
+//
+//	printf("ASM Test 7 :%d\t[%d]\n", asm_sub20(34), 34-20);
+//	printf("ASM Test 8 :%d\t[%d]\n", asm_simple_sub(123, 456), 123-456);
+//	printf("ASM Test 9 :%d\t[%d]\n", asm_get_neg(1024), 0-1024);
+//
+//	printf("ASM Test 10 Result:%u\t[%u]\n", asm_simple_mul(123, 456), 123*456);
+//
+//	//Test Addition/Mulitiplication Cycles
+//#define	TEST_ADD_MUL_NUM	500000
+//	//If the multiplication takes similar cycles, it is a single cycle multiplication implementation
+//	uint32_t tmpTick = xTaskGetTickCount();
+//	for(uint32_t i=0; i<TEST_ADD_MUL_NUM; ++i)
+//	{
+//		uint32_t tn = 101;
+//		asm_simple_add(tn, 456);
+//	}
+//	tmpTick = xTaskGetTickCount()-tmpTick;
+//	printf("A:%u\n", tmpTick);
+//
+//	tmpTick = xTaskGetTickCount();
+//	for(uint32_t i=0; i<TEST_ADD_MUL_NUM; ++i)
+//	{
+//		uint32_t tn = 101;
+//		asm_simple_mul(tn, 456);
+//	}
+//	tmpTick = xTaskGetTickCount()-tmpTick;
+//	printf("M:%u\n", tmpTick);
+//
+//	//Test Division
+//	{
+//		uint32_t ta = 10;
+//		uint32_t tb = 2;
+//		uint32_t tc = ta/tb;
+//		printf("%u %u %u\n", ta, tb, tc);
+//	}
+//
+//	printf("ASM Test 11 Result:%u\t[%u]\n", asm_test_cmp(123, 456), (123==456));
+//	printf("ASM Test 12 Result:%u\t[%u]\n", asm_test_cmn(123, 456), (123!=456));
+//	printf("ASM Test 13 Result:%08X\t[%08X]\n", asm_get_and(0x12345678, 0x34567890), 0x12345678 & 0x34567890);
+//	printf("ASM Test 14 Result:%08X\t[%08X]\n", asm_get_or(0x12345678, 0x34567890), (0x12345678 | 0x34567890));
+//	printf("ASM Test 15 Result:%08X\t[%08X]\n", asm_get_not(0x12345678), 0-0x12345678);
+//
+//	uint32_t g_TestVar32 = 0x12345678;
+//	printf("ASM Test 20 Result:%08X\t[%08X]\n", asm_ldr32(&g_TestVar32), g_TestVar32);
+//	asm_str32(&g_TestVar32, 0x78904563);
+//	printf("ASM Test 21 Result:%08X\t[%08X]\n", asm_ldr32(&g_TestVar32), g_TestVar32);
+//	printf("ASM Test 22 Result:%u\t[%d]\n", asm_test_push_pop(123, 456), 123+456+456+4);
+//
+//	//Part 7: Test Extend, Reverse
+//	printf("Part 7\n");
+//	printf("ASM Test 23 Result:%08X\t[%08X]\n", asm_s16ext((int16_t)0x8001), (int32_t)0x8001);
+//	printf("ASM Test 24 Result:%08X\t[%08X]\n", asm_s8ext((int8_t)0xC4), (int32_t)0xC4);
+//	printf("ASM Test 25 Result:%08X\t[%08X]\n", asm_u16ext((uint16_t)0x8001), (uint32_t)0x8001);
+//	printf("ASM Test 26 Result:%08X\t[%08X]\n", asm_rev(0x123456C8), __REV(0x123456C8));
+//	printf("ASM Test 27 Result:%08X\t[%08X]\n", asm_rev16(0x123456C8), __REV16(0x123456C8));
+//	printf("ASM Test 28 Result:%08X\t[%08X]\n", asm_revsh(0x123456C8), __REVSH(0x123456C8));
+//
+//	//Part 8: Test SVC, MSR, MRS
+//	printf("Part 8\n");
+//	printf("ASM Test 29, Before SVC\n");
+//	//	asm_svc_1(1000);
+//	printf("After SVC\n");
+//
+//	printf("ASM Test 30 Result:%08X\n", asm_test_mrs());
+//	printf("ASM Test 31 Tick:%u\n", SysTick->VAL);
+//	asm_test_msr(0x00000001);
+//	uint32_t p1 = asm_test_mrs();
+//	asm_test_msr(0x00000000);
+//	uint32_t p2 = asm_test_mrs();
+//	printf("%08X\t%08X\n", p1, p2);
 
 	//	{
 	//		uint32_t au = ((1<<31) -1);
@@ -351,7 +366,8 @@ void LED_Toggle_EverySec(void){
 	//		printf("VDIV %f / %f = %f\n", fA, fB, asm_vdiv(fA, fB));
 	//	}
 
-	print_global_var_test();
+//	print_global_var_test();
+	test_rom_func();
 
 	XMC_SCU_StartTemperatureMeasurement();
 }
@@ -474,6 +490,9 @@ int main(void)
 	DAVE_STATUS_t status;
 
 	status = DAVE_Init();           /* Initialization of DAVE APPs  */
+
+	XMC_WDT_Start();
+	printf("\nWDT Cnt:%u\n", XMC_WDT_GetCounter());
 
 	XMC_SCU_EnableTemperatureSensor();
 	XMC_SCU_StartTemperatureMeasurement();

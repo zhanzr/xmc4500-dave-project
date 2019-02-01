@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <ApplicationModel:ApplicationData xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ApplicationModel="www.infineon.com/dave/applicationmodel" xmlns:ResourceModel="http://www.infineon.com/Davex/Resource.ecore">
   <nodes xsi:type="ApplicationModel:AppNode">
-    <resource xsi:type="ResourceModel:App" href="APPS/CPU_CTRL_XMC4/v4_0_16/CPU_CTRL_XMC4_0.app#/"/>
-  </nodes>
-  <nodes xsi:type="ApplicationModel:AppNode">
     <resource xsi:type="ResourceModel:App" href="APPS/CLOCK_XMC4/v4_0_22/CLOCK_XMC4_0.app#/"/>
   </nodes>
   <nodes xsi:type="ApplicationModel:PeripheralNode">
@@ -48,21 +45,14 @@
   <nodes xsi:type="ApplicationModel:PeripheralNode">
     <resource xsi:type="ResourceModel:Peripheral" href="HW_RESOURCES/FCE/FCE_0.dd#/"/>
   </nodes>
-  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.11" target="//@nodes.1"/>
-  <hwConnections href="APPS/CPU_CTRL_XMC4/v4_0_16/CPU_CTRL_XMC4_0.app#//@connections.7"/>
-  <hwConnections href="APPS/CPU_CTRL_XMC4/v4_0_16/CPU_CTRL_XMC4_0.app#//@connections.8"/>
-  <hwConnections href="APPS/CPU_CTRL_XMC4/v4_0_16/CPU_CTRL_XMC4_0.app#//@connections.9"/>
-  <hwConnections href="APPS/CPU_CTRL_XMC4/v4_0_16/CPU_CTRL_XMC4_0.app#//@connections.10"/>
-  <hwConnections href="APPS/CPU_CTRL_XMC4/v4_0_16/CPU_CTRL_XMC4_0.app#//@connections.11"/>
-  <hwConnections href="APPS/CPU_CTRL_XMC4/v4_0_16/CPU_CTRL_XMC4_0.app#//@connections.12"/>
-  <hwConnections href="APPS/CPU_CTRL_XMC4/v4_0_16/CPU_CTRL_XMC4_0.app#//@connections.13"/>
-  <hwConnections href="APPS/CPU_CTRL_XMC4/v4_0_16/CPU_CTRL_XMC4_0.app#//@connections.14"/>
-  <hwConnections href="APPS/CPU_CTRL_XMC4/v4_0_16/CPU_CTRL_XMC4_0.app#//@connections.15"/>
-  <hwConnections href="APPS/CPU_CTRL_XMC4/v4_0_16/CPU_CTRL_XMC4_0.app#//@connections.16"/>
-  <hwConnections href="APPS/CPU_CTRL_XMC4/v4_0_16/CPU_CTRL_XMC4_0.app#//@connections.17"/>
-  <hwConnections href="APPS/CPU_CTRL_XMC4/v4_0_16/CPU_CTRL_XMC4_0.app#//@connections.18"/>
-  <hwConnections href="APPS/CPU_CTRL_XMC4/v4_0_16/CPU_CTRL_XMC4_0.app#//@connections.19"/>
-  <hwConnections href="APPS/CPU_CTRL_XMC4/v4_0_16/CPU_CTRL_XMC4_0.app#//@connections.20"/>
+  <nodes xsi:type="ApplicationModel:AppNode">
+    <resource xsi:type="ResourceModel:App" href="APPS/WATCHDOG/v4_0_14/WATCHDOG_0.app#/"/>
+  </nodes>
+  <nodes xsi:type="ApplicationModel:PeripheralNode">
+    <resource xsi:type="ResourceModel:Peripheral" href="HW_RESOURCES/WDT/WDT_0.dd#/"/>
+  </nodes>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.10" target="//@nodes.0"/>
+  <connections xsi:type="ApplicationModel:NodeConnection" source="//@nodes.15" target="//@nodes.0"/>
   <hwConnections href="APPS/CLOCK_XMC4/v4_0_22/CLOCK_XMC4_0.app#//@connections.0"/>
   <hwConnections href="APPS/CLOCK_XMC4/v4_0_22/CLOCK_XMC4_0.app#//@connections.5"/>
   <hwConnections href="APPS/CLOCK_XMC4/v4_0_22/CLOCK_XMC4_0.app#//@connections.6"/>
@@ -70,5 +60,4 @@
   <hwConnections href="APPS/DIGITAL_IO/v4_0_16/DIGITAL_IO_0.app#//@connections.1"/>
   <hwConnections href="APPS/DIGITAL_IO/v4_0_16/DIGITAL_IO_1.app#//@connections.0"/>
   <hwConnections href="APPS/DIGITAL_IO/v4_0_16/DIGITAL_IO_1.app#//@connections.1"/>
-  <hwConnections href="APPS/CPU_CTRL_XMC4/v4_0_16/CPU_CTRL_XMC4_0.app#//@connections.1"/>
 </ApplicationModel:ApplicationData>

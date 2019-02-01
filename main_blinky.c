@@ -187,19 +187,19 @@ void main_blinky( void )
 //							mainSIMPLE_PRINT_TASK_PRIORITY, 		/* The priority assigned to the task. */
 //							NULL );
 
-		xTaskCreate( sema_print_task,
-							"m_print", 									/* The text name assigned to the task - for debug only as it is not used by the kernel. */
-							configMINIMAL_STACK_SIZE*2, 				/* The size of the stack to allocate to the task. */
-							( void * ) 3, /* The parameter passed to the task - just to check the functionality. */
-							mainSIMPLE_PRINT_TASK_PRIORITY, 		/* The priority assigned to the task. */
-							NULL );									/* The task handle is not required, so NULL is passed. */
-
-		xTaskCreate( sema_print_task,
-							"m_print", 									/* The text name assigned to the task - for debug only as it is not used by the kernel. */
-							configMINIMAL_STACK_SIZE*2, 				/* The size of the stack to allocate to the task. */
-							( void * ) 4, /* The parameter passed to the task - just to check the functionality. */
-							mainSIMPLE_PRINT_TASK_PRIORITY, 		/* The priority assigned to the task. */
-							NULL );
+//		xTaskCreate( sema_print_task,
+//							"m_print", 									/* The text name assigned to the task - for debug only as it is not used by the kernel. */
+//							configMINIMAL_STACK_SIZE*2, 				/* The size of the stack to allocate to the task. */
+//							( void * ) 3, /* The parameter passed to the task - just to check the functionality. */
+//							mainSIMPLE_PRINT_TASK_PRIORITY, 		/* The priority assigned to the task. */
+//							NULL );									/* The task handle is not required, so NULL is passed. */
+//
+//		xTaskCreate( sema_print_task,
+//							"m_print", 									/* The text name assigned to the task - for debug only as it is not used by the kernel. */
+//							configMINIMAL_STACK_SIZE*2, 				/* The size of the stack to allocate to the task. */
+//							( void * ) 4, /* The parameter passed to the task - just to check the functionality. */
+//							mainSIMPLE_PRINT_TASK_PRIORITY, 		/* The priority assigned to the task. */
+//							NULL );
 		/* Start the tasks and timer running. */
 		vTaskStartScheduler();
 	}
@@ -241,7 +241,7 @@ const unsigned long ulValueToSend = 100UL;
 }
 /*-----------------------------------------------------------*/
 
-extern void LED_Toggle_EverySec(void);
+extern void configTOGGLE_LED(void);
 
 static void prvQueueReceiveTask( void *pvParameters )
 {
@@ -261,8 +261,7 @@ unsigned long ulReceivedValue;
 		is it the expected value?  If it is, toggle the LED. */
 		if( ulReceivedValue == 100UL )
 		{
-//			configTOGGLE_LED();
-			LED_Toggle_EverySec();
+			configTOGGLE_LED();
 			ulReceivedValue = 0U;
 		}
 	}
