@@ -11,7 +11,13 @@
 //With carry 			SBCS Rd, Rd, Rm 		1
 //Immediate from SP 		SUB SP, SP, #<imm> 		1
 //Subtract Negate 		RSBS Rd, Rn, #0 		1
-    .thumb
+        .cpu cortex-m4
+        .syntax unified
+        .thumb
+
+        .file   "cortex_m0_test_3.S"
+
+        .section ".text"
 
     .global asm_sub20
     .global asm_simple_sub

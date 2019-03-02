@@ -10,7 +10,13 @@
 //Enable interrupts                  CPSIE i                 1
 //Read special register              MRS Rd, <specreg>       4
 //Write special register             MSR <specreg>, Rn       4
-    .thumb
+        .cpu cortex-m4
+        .syntax unified
+        .thumb
+
+        .file   "cortex_m0_test_8.S"
+
+        .section ".text"
 
     .global asm_svc_1
     .global asm_svc_10

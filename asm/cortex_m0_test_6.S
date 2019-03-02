@@ -49,8 +49,13 @@
 //R13 (SP), R15 (PC)
 //Should not be used for normal processing.
 
-//load a 32bit
-    .thumb
+        .cpu cortex-m4
+        .syntax unified
+        .thumb
+
+        .file   "cortex_m0_test_6.S"
+
+        .section ".text"
 
     .global asm_ldr32
     .global asm_str32
@@ -62,6 +67,7 @@
 #define result          r0
 
     .align 4
+//load a 32bit
 asm_ldr32:
 	mov r1,r0
 	LDR r0, [r1, #0]

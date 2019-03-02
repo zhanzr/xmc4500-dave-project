@@ -12,7 +12,13 @@
 //Bytes in word                      REV Rd, Rm              1
 //Bytes in both halfwords            REV16 Rd, Rm            1
 //Signed bottom half word            REVSH Rd, Rm            1
-    .thumb
+        .cpu cortex-m4
+        .syntax unified
+        .thumb
+
+        .file   "cortex_m0_test_7.S"
+
+        .section ".text"
 
     .global asm_s16ext
     .global asm_s8ext

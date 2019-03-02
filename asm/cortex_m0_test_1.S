@@ -9,7 +9,13 @@
 //Lo to Lo               MOVS Rd, Rm             1
 //Any to Any             MOV Rd, Rm              1
 //Any to PC              MOV PC, Rm              3
-    .thumb
+        .cpu cortex-m4
+        .syntax unified
+        .thumb
+
+        .file   "cortex_m0_test_1.S"
+
+        .section ".text"
 
     .global asm_get_8bit_number
     .global asm_get_xor

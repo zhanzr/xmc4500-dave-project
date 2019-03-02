@@ -12,7 +12,13 @@
 //Arithmetic shift right 			ASRS Rd, Rm, #<shift> 	1
 //Arithmetic shift right by register ASRS Rd, Rd, Rs 		1
 //Rotate right by register 			RORS Rd, Rd, Rs 		1
-    .thumb
+        .cpu cortex-m4
+        .syntax unified
+        .thumb
+
+        .file   "cortex_m0_test_5.S"
+
+        .section ".text"
 
     .global asm_logic_left
     .global asm_logic_right

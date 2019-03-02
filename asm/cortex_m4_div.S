@@ -4,7 +4,6 @@
 //Description: Floating-point instructions
 //These instructions are only available if the FPU is included, and enabled, in the system.
 //
-
         .cpu cortex-m4
         .syntax unified
         .thumb

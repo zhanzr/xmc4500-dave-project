@@ -15,7 +15,13 @@
 //Bit clear 				BICS Rd, Rd, Rm 		1
 //Move NOT 				MVNS Rd, Rm 			1
 //AND test 				TST Rn, Rm 				1
-    .thumb
+        .cpu cortex-m4
+        .syntax unified
+        .thumb
+
+        .file   "cortex_m0_test_4.S"
+
+        .section ".text"
 
     .global asm_simple_mul
     .global asm_test_cmp

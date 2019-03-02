@@ -14,7 +14,13 @@
 //Immediate to SP 		ADD SP, SP, #<imm> 		1
 //Form address from SP 	ADD Rd, SP, #<imm> 		1
 //Form address from PC 	ADR Rd, <label> 		1
-    .thumb
+        .cpu cortex-m4
+        .syntax unified
+        .thumb
+
+        .file   "cortex_m0_test_2.S"
+
+        .section ".text"
 
     .global asm_add2
     .global asm_simple_add

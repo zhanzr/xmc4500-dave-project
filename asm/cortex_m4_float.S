@@ -59,7 +59,7 @@
         .syntax unified
         .thumb
 
-        .file   "cortex_m4_float1.S"
+        .file   "cortex_m4_float.S"
 
         .section ".text"
 
