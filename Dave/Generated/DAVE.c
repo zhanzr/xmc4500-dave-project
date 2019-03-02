@@ -92,6 +92,11 @@ DAVE_STATUS_t DAVE_Init(void)
   {
 	 /**  Initialization of WATCHDOG APP instance WATCHDOG_0 */
 	 init_status = (DAVE_STATUS_t)WATCHDOG_Init(&WATCHDOG_0); 
+   } 
+  if (init_status == DAVE_STATUS_SUCCESS)
+  {
+	 /**  Initialization of UART APP instance UART_0 */
+	 init_status = (DAVE_STATUS_t)UART_Init(&UART_0); 
    }  
   return init_status;
 } /**  End of function DAVE_Init */

@@ -169,6 +169,13 @@
 								<option id="com.ifx.xmc4000.appLinker.option.misc.mfloat.904182534" name="Floating point" superClass="com.ifx.xmc4000.appLinker.option.misc.mfloat" useByScannerDiscovery="false" value="org.eclipse.cdt.cross.arm.gnu.base.option.other.mfloat.softfp" valueType="enumerated"/>
 								<option id="com.ifx.xmc4000.appLinker.option.newlib.1227329175" name="Runtime library" superClass="com.ifx.xmc4000.appLinker.option.newlib" value="org.eclipse.cdt.cross.arm.gnu.c.link.option.newlib.standard" valueType="enumerated"/>
 								<option id="com.ifx.xmc4000.appLinker.option.nosys.specs.1570657440" name="Provide default newlib system calls (-specs=nosys.specs)" superClass="com.ifx.xmc4000.appLinker.option.nosys.specs" value="true" valueType="boolean"/>
+								<option id="com.ifx.xmc4000.appLinker.option.libs.84111816" name="Libraries (-l)" superClass="com.ifx.xmc4000.appLinker.option.libs" useByScannerDiscovery="false" valueType="libs">
+									<listOptionValue builtIn="false" value="m"/>
+									<listOptionValue builtIn="false" value="test"/>
+								</option>
+								<option id="com.ifx.xmc4000.appLinker.option.paths.51609942" name="Library search path (-L)" superClass="com.ifx.xmc4000.appLinker.option.paths" useByScannerDiscovery="false" valueType="libPaths">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/Libraries}&quot;"/>
+								</option>
 								<inputType id="com.ifx.xmc4000.appLinker.inputType.1846790534" name="ARM-GCC for XMC Linker Input Type" superClass="com.ifx.xmc4000.appLinker.inputType">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
 									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
@@ -186,8 +193,11 @@
 							<tool id="com.ifx.xmc4000.printsize.1032025052" name="ARM-GCC Print Size" superClass="com.ifx.xmc4000.printsize"/>
 						</toolChain>
 					</folderInfo>
+					<fileInfo id="com.ifx.xmc4000.appDebug.341024911.30971505" name="test_lib_code.o" rcbsApplicability="disable" resourcePath="test_lib_code.o" toolsToInvoke="com.ifx.xmc4000.appDebug.linker.2106263666.392523291">
+						<tool id="com.ifx.xmc4000.appDebug.linker.2106263666.392523291" name="ARM-GCC C Linker" superClass="com.ifx.xmc4000.appDebug.linker.2106263666"/>
+					</fileInfo>
 					<sourceEntries>
-						<entry excluding="asm/cortex_m4_float2.S|Dave/Model" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="test_lib_code.o|test_lib_code.c|asm/cortex_m4_float2.S|Dave/Model" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>

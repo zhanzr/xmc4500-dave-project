@@ -448,15 +448,13 @@ void USIC0_5_IRQHandler(void)
 	;
 }
 
-void USIC1_0_IRQHandler(void)
-{
-	;
-}
-
-void USIC1_1_IRQHandler(void)
-{
-	;
-}
+//void USIC1_0_IRQHandler(void) {
+//	;
+//}
+//
+//void USIC1_1_IRQHandler(void) {
+//	;
+//}
 
 void USIC1_2_IRQHandler(void)
 {

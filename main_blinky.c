@@ -79,7 +79,7 @@
 
 /* The rate at which data is sent to the queue.  The 200ms value is converted
 to ticks using the portTICK_PERIOD_MS constant. */
-#define mainQUEUE_SEND_FREQUENCY_MS			( 2000 / portTICK_PERIOD_MS )
+#define mainQUEUE_SEND_FREQUENCY_MS			( 10000 / portTICK_PERIOD_MS )
 
 /* The number of items the queue can hold.  This is 1 as the receive task
 will remove items as they are added, meaning the send task should always find
@@ -117,7 +117,7 @@ static volatile uint32_t g_test_sema32 = 1;
 void simple_print_task(void *pvParameters){
 	uint32_t para_u32 = (uint32_t)pvParameters;
 
-	while(true){
+	while(true) {
 		printf("%s %08X %08X\n", __func__,  para_u32, xTaskGetTickCount());
 		vTaskDelay( ( 5000 / portTICK_PERIOD_MS ) );
 	}
@@ -166,7 +166,7 @@ void main_blinky( void )
 		file. */
 		xTaskCreate( prvQueueReceiveTask,					/* The function that implements the task. */
 					"Rx", 									/* The text name assigned to the task - for debug only as it is not used by the kernel. */
-					configMINIMAL_STACK_SIZE*4, 				/* The size of the stack to allocate to the task. */
+					1024*3, 				/* The size of the stack to allocate to the task. */
 					( void * ) mainQUEUE_RECEIVE_PARAMETER, /* The parameter passed to the task - just to check the functionality. */
 					mainQUEUE_RECEIVE_TASK_PRIORITY, 		/* The priority assigned to the task. */
 					NULL );									/* The task handle is not required, so NULL is passed. */
