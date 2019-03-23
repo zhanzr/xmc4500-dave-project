@@ -247,7 +247,7 @@ __Vectors:
     .globl  Reset_Handler
     .type   Reset_Handler, %function
 Reset_Handler:
-    ldr sp,=__initial_sp
+//    ldr sp,=__initial_sp
 
 #ifndef __SKIP_SYSTEM_INIT
     ldr  r0, =SystemInit

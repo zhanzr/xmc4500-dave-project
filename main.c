@@ -28,7 +28,6 @@
 /* Set mainCREATE_SIMPLE_BLINKY_DEMO_ONLY to one to run the simple blinky demo,
 or 0 to run the more comprehensive test and demo application. */
 #define mainCREATE_SIMPLE_BLINKY_DEMO_ONLY	1
-
 /*-----------------------------------------------------------*/
 #define	RETARGET_SWD	0
 #define	RETARGET_UART	1
@@ -97,6 +96,25 @@ void print_global_var_test(void) {
 			&g_var5, g_var5);
 }
 
+#define __ASM __asm /*!< asm keyword for GNU Compiler */
+#define __INLINE inline /*!< inline keyword for GNU Compiler */
+#define __STATIC_INLINE static inline
+
+/**
+\brief Get Link Register
+\details Returns the current value of the Link Register (LR).
+\return LR Register value
+*/
+__attribute__( ( always_inline ) ) __STATIC_INLINE uint32_t __get_LR(void)
+{
+  register uint32_t result;
+
+  __ASM volatile ("MOV %0, LR\n" : "=r" (result) );
+  return(result);
+}
+
+uint32_t g_lr_val[3];
+
 void test_rom_func(void) {
 	//	printf("%08X %08X %08X\n",
 	//			SCB->VTOR,
@@ -110,11 +128,20 @@ void test_rom_func(void) {
 	printf("%u\n",  xTaskGetTickCount());
 	printf("\nWDT Cnt:%u\n", XMC_WDT_GetCounter());
 	XMC_WDT_Service();
+
+}
+
+void test_lr_func(void) {
+	g_lr_val[1] = __get_LR();
 }
 
 uint32_t SM3_test_suite(void);
 
 void configTOGGLE_LED(void) {
+	g_lr_val[0] = __get_LR();
+	test_lr_func();
+	g_lr_val[2] = __get_LR();
+
 	DIGITAL_IO_ToggleOutput(&DIGITAL_IO_0);
 	DIGITAL_IO_ToggleOutput(&DIGITAL_IO_1);
 	//	printf("%u Hz, %08X\n", SystemCoreClock, SCB->CPUID);
@@ -129,9 +156,11 @@ void configTOGGLE_LED(void) {
 	printf("%f %f\n", tmpV13, tmpV33);
 
 	printf("\n\n\n\n\n\n\n\n\n\n\n");
-	uint32_t sm3_ret = SM3_test_suite();
-	printf("\n");
-	printf("SM3 Test Suite Return: %08X\n", sm3_ret);
+	printf("Return Addr %08X %08X %08X\n", g_lr_val[0], g_lr_val[1], g_lr_val[2]);
+
+//	uint32_t sm3_ret = SM3_test_suite();
+//	printf("\n");
+//	printf("SM3 Test Suite Return: %08X\n", sm3_ret);
 
 	//	printf("ASM Test 1 Result:%u\n", asm_get_8bit_number());
 	//	printf("ASM Test 2 Result:%08X\t[%08X]\n", asm_get_xor(0x12345678, 0x34567890), 0x12345678^0x34567890);
@@ -396,7 +425,8 @@ void configTOGGLE_LED(void) {
 	//	}
 
 	//	print_global_var_test();
-	test_rom_func();
+	//	test_rom_func();
+
 
 	XMC_SCU_StartTemperatureMeasurement();
 }
@@ -732,13 +762,9 @@ int main(void) {
 	/* The mainCREATE_SIMPLE_BLINKY_DEMO_ONLY setting is described at the top
 	of this file. */
 #if mainCREATE_SIMPLE_BLINKY_DEMO_ONLY == 1
-	{
-		main_blinky();
-	}
+	main_blinky();
 #else
-	{
-		main_full();
-	}
+	main_full();
 #endif
 
 	/* Placeholder for user application code. The while loop below can be replaced with user application code. */

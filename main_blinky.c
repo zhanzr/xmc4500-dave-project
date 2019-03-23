@@ -165,41 +165,41 @@ void main_blinky( void )
 		/* Start the two tasks as described in the comments at the top of this
 		file. */
 		xTaskCreate( prvQueueReceiveTask,					/* The function that implements the task. */
-					"Rx", 									/* The text name assigned to the task - for debug only as it is not used by the kernel. */
-					1024*3, 				/* The size of the stack to allocate to the task. */
-					( void * ) mainQUEUE_RECEIVE_PARAMETER, /* The parameter passed to the task - just to check the functionality. */
-					mainQUEUE_RECEIVE_TASK_PRIORITY, 		/* The priority assigned to the task. */
-					NULL );									/* The task handle is not required, so NULL is passed. */
+				"Rx", 									/* The text name assigned to the task - for debug only as it is not used by the kernel. */
+				1024*3, 				/* The size of the stack to allocate to the task. */
+				( void * ) mainQUEUE_RECEIVE_PARAMETER, /* The parameter passed to the task - just to check the functionality. */
+				mainQUEUE_RECEIVE_TASK_PRIORITY, 		/* The priority assigned to the task. */
+				NULL );									/* The task handle is not required, so NULL is passed. */
 
 		xTaskCreate( prvQueueSendTask, "TX", configMINIMAL_STACK_SIZE*4, ( void * ) mainQUEUE_SEND_PARAMETER, mainQUEUE_SEND_TASK_PRIORITY, NULL );
 
-//		xTaskCreate( simple_print_task,
-//							"s_print", 									/* The text name assigned to the task - for debug only as it is not used by the kernel. */
-//							configMINIMAL_STACK_SIZE*2, 				/* The size of the stack to allocate to the task. */
-//							( void * ) 1, /* The parameter passed to the task - just to check the functionality. */
-//							mainSIMPLE_PRINT_TASK_PRIORITY, 		/* The priority assigned to the task. */
-//							NULL );									/* The task handle is not required, so NULL is passed. */
-//
-//		xTaskCreate( simple_print_task,
-//							"s_print", 									/* The text name assigned to the task - for debug only as it is not used by the kernel. */
-//							configMINIMAL_STACK_SIZE*2, 				/* The size of the stack to allocate to the task. */
-//							( void * ) 2, /* The parameter passed to the task - just to check the functionality. */
-//							mainSIMPLE_PRINT_TASK_PRIORITY, 		/* The priority assigned to the task. */
-//							NULL );
+		//		xTaskCreate( simple_print_task,
+		//							"s_print", 									/* The text name assigned to the task - for debug only as it is not used by the kernel. */
+		//							configMINIMAL_STACK_SIZE*2, 				/* The size of the stack to allocate to the task. */
+		//							( void * ) 1, /* The parameter passed to the task - just to check the functionality. */
+		//							mainSIMPLE_PRINT_TASK_PRIORITY, 		/* The priority assigned to the task. */
+		//							NULL );									/* The task handle is not required, so NULL is passed. */
+		//
+		//		xTaskCreate( simple_print_task,
+		//							"s_print", 									/* The text name assigned to the task - for debug only as it is not used by the kernel. */
+		//							configMINIMAL_STACK_SIZE*2, 				/* The size of the stack to allocate to the task. */
+		//							( void * ) 2, /* The parameter passed to the task - just to check the functionality. */
+		//							mainSIMPLE_PRINT_TASK_PRIORITY, 		/* The priority assigned to the task. */
+		//							NULL );
 
-//		xTaskCreate( sema_print_task,
-//							"m_print", 									/* The text name assigned to the task - for debug only as it is not used by the kernel. */
-//							configMINIMAL_STACK_SIZE*2, 				/* The size of the stack to allocate to the task. */
-//							( void * ) 3, /* The parameter passed to the task - just to check the functionality. */
-//							mainSIMPLE_PRINT_TASK_PRIORITY, 		/* The priority assigned to the task. */
-//							NULL );									/* The task handle is not required, so NULL is passed. */
-//
-//		xTaskCreate( sema_print_task,
-//							"m_print", 									/* The text name assigned to the task - for debug only as it is not used by the kernel. */
-//							configMINIMAL_STACK_SIZE*2, 				/* The size of the stack to allocate to the task. */
-//							( void * ) 4, /* The parameter passed to the task - just to check the functionality. */
-//							mainSIMPLE_PRINT_TASK_PRIORITY, 		/* The priority assigned to the task. */
-//							NULL );
+		//		xTaskCreate( sema_print_task,
+		//							"m_print", 									/* The text name assigned to the task - for debug only as it is not used by the kernel. */
+		//							configMINIMAL_STACK_SIZE*2, 				/* The size of the stack to allocate to the task. */
+		//							( void * ) 3, /* The parameter passed to the task - just to check the functionality. */
+		//							mainSIMPLE_PRINT_TASK_PRIORITY, 		/* The priority assigned to the task. */
+		//							NULL );									/* The task handle is not required, so NULL is passed. */
+		//
+		//		xTaskCreate( sema_print_task,
+		//							"m_print", 									/* The text name assigned to the task - for debug only as it is not used by the kernel. */
+		//							configMINIMAL_STACK_SIZE*2, 				/* The size of the stack to allocate to the task. */
+		//							( void * ) 4, /* The parameter passed to the task - just to check the functionality. */
+		//							mainSIMPLE_PRINT_TASK_PRIORITY, 		/* The priority assigned to the task. */
+		//							NULL );
 		/* Start the tasks and timer running. */
 		vTaskStartScheduler();
 	}
@@ -215,8 +215,8 @@ void main_blinky( void )
 
 static void prvQueueSendTask( void *pvParameters )
 {
-TickType_t xNextWakeTime;
-const unsigned long ulValueToSend = 100UL;
+	TickType_t xNextWakeTime;
+	const unsigned long ulValueToSend = 100UL;
 
 	/* Check the task parameter is as expected. */
 	configASSERT( ( ( unsigned long ) pvParameters ) == mainQUEUE_SEND_PARAMETER );
@@ -245,7 +245,7 @@ extern void configTOGGLE_LED(void);
 
 static void prvQueueReceiveTask( void *pvParameters )
 {
-unsigned long ulReceivedValue;
+	unsigned long ulReceivedValue;
 
 	/* Check the task parameter is as expected. */
 	configASSERT( ( ( unsigned long ) pvParameters ) == mainQUEUE_RECEIVE_PARAMETER );
